@@ -20,12 +20,12 @@
 typedef enum {SUCCESS, FAILURE} i2c_rc;
 
 /* open the bus to use as i2c */
-static i2c_rc open_i2c_bus();
+static i2c_rc open_i2c_bus(int* file);
 
-i2c_rc i2c_write(uint8_t* byte_to_write);
+i2c_rc i2c_write(uint8_t* byte_to_write, int file);
 
-i2c_rc i2c_read(uint8_t* byte_read);
+i2c_rc i2c_read(uint8_t* byte_read, int file);
 
-i2c_rc i2c_init(uint8_t dev_addr);
+i2c_rc i2c_init(uint8_t dev_addr, int* file);
 
 #endif

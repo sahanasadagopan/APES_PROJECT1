@@ -31,32 +31,33 @@
 #define CONTROL_REG_OFF     0x00
 
 /* let file be a global variable for now- this represents the I2C bus */
-int file;
 
 /* let main be the temp driver */
 
 int main()
 {
-    i2c_init(DEV_ADDRESS);
+    int file;
+    
+    i2c_init(DEV_ADDRESS, &file);
 
     uint8_t address_control_reg=CMD_REG|CONTROL_REG_ADDR;
 
-    i2c_write(&address_control_reg);
+    i2c_write(&address_control_reg, file);
     
     uint8_t byte_to_write=CONTROL_REG_ON;
     
-    i2c_write(&byte_to_write);
+    i2c_write(&byte_to_write, file);
     
-
-    i2c_write(&address_control_reg);
+    i2c_write(&address_control_reg, file);
 
     uint8_t byte_read=0;
 
     printf("byte read before the call:%" PRIu8 "\n", byte_read);
 
-    i2c_read(&byte_read);
+    i2c_read(&byte_read, file);
     
     printf("byte read after the call:%" PRIu8 "\n", byte_read);
+
 }
 
 /* Name         :   static i2c_rc open_i2c_bus();
@@ -80,17 +81,17 @@ int main()
  *                           by open is negative                 
  *
  * */
-static i2c_rc open_i2c_bus()
+static i2c_rc open_i2c_bus(int* file)
 {
     int adapter_nr = 2; /* probably dynamically determined */
     char filename[20];
            
     snprintf(filename, 19, "/dev/i2c-%d", adapter_nr);
     
-    file = open(filename, O_RDWR);
+    *file = open(filename, O_RDWR);
     
     /* ERROR HANDLING; you can check errno to see what went wrong */
-    if (file < 0) 
+    if (*file < 0) 
     {
         perror("bus open falied\n");
         return FAILURE;    
@@ -121,17 +122,17 @@ static i2c_rc open_i2c_bus()
  *                           conditions fail.              
  * 
  * */
-i2c_rc i2c_init(uint8_t dev_addr)
+i2c_rc i2c_init(uint8_t dev_addr, int* file)
 {
     /* open the I2C bus first */
-    if(open_i2c_bus()!=SUCCESS)
+    if(open_i2c_bus(file)!=SUCCESS)
     {
         perror("failed to open the i2c bus");
         return FAILURE;
     }
     
     /* initialize i2c with the device with address dev_addr */
-    if (ioctl(file, I2C_SLAVE, dev_addr) < 0) 
+    if (ioctl(*file, I2C_SLAVE, dev_addr) < 0) 
     {
         /* ERROR HANDLING; you can check errno to see what went wrong */
         perror("initialisation failed\n");
@@ -159,7 +160,7 @@ i2c_rc i2c_init(uint8_t dev_addr)
  *                           than 1.
  * 
  * */
-i2c_rc i2c_write(uint8_t* byte_to_write)
+i2c_rc i2c_write(uint8_t* byte_to_write, int file)
 {
     /* write a byte on the bus using the write system call,
      * this is just like writing to a file, except multibyte
@@ -193,7 +194,7 @@ i2c_rc i2c_write(uint8_t* byte_to_write)
  *                           than 1.
  * 
  * */
-i2c_rc i2c_read(uint8_t* byte_read)
+i2c_rc i2c_read(uint8_t* byte_read, int file)
 {
     
     /* read a byte on the bus using the read system call,
