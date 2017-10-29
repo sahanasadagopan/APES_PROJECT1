@@ -1,4 +1,3 @@
-
 /*  
  *  Name        : light_sensor.c
  *  

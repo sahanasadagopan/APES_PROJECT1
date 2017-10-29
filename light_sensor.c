@@ -148,3 +148,8 @@ i2c_rc turn_on_light_sensor(int light_sensor_fd)
     /* return successfully */
     return SUCCESS;
 }
+
+
+
+
+
