@@ -24,41 +24,7 @@
 
 #include "i2c.h"
 
-#define DEV_ADDRESS         0x39
-#define CMD_REG             0x80
-#define CONTROL_REG_ADDR    0x00
-#define CONTROL_REG_ON      0x03
-#define CONTROL_REG_OFF     0x00
 
-/* let file be a global variable for now- this represents the I2C bus */
-
-/* let main be the temp driver */
-
-int main()
-{
-    int file;
-    
-    i2c_init(DEV_ADDRESS, &file);
-
-    uint8_t address_control_reg=CMD_REG|CONTROL_REG_ADDR;
-
-    i2c_write(&address_control_reg, file);
-    
-    uint8_t byte_to_write=CONTROL_REG_ON;
-    
-    i2c_write(&byte_to_write, file);
-    
-    i2c_write(&address_control_reg, file);
-
-    uint8_t byte_read=0;
-
-    printf("byte read before the call:%" PRIu8 "\n", byte_read);
-
-    i2c_read(&byte_read, file);
-    
-    printf("byte read after the call:%" PRIu8 "\n", byte_read);
-
-}
 
 /* Name         :   static i2c_rc open_i2c_bus();
  * 
