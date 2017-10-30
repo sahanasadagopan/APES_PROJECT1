@@ -14,11 +14,41 @@
 #include <stdint.h>
 #include "i2c.h"
 
+#define DEV_ADDRESS         0x39
+
+#define CMD_REG             0x80
+
+#define CONTROL_REG_ADDR    0x00
+#define CONTROL_REG_ON      0x03
+#define CONTROL_REG_OFF     0x00
+
+#define ID_REG_ADDRESS      0x0A 
+
+/* timing reg stuff */
+
+#define TIMING_REG_ADDR     0x01
+#define ADC_GAIN_MASK       0x08
+#define MANUAL_TIMING_MASK  0x04
+#define INTEG_TIME_MASK     0x03
+
+
+
+typedef enum {MIN_INTEG_TIME=0, MODERATE_INTEG_TIME=1, MAX_INTEG_TIME=2, INTEG_NA=3} integ_time_t;
+
+typedef enum {MIN_GAIN=0, MAX_GAIN=1} gain_t;
 
 i2c_rc read_id_reg(int light_sensor_fd, uint8_t* part_no, uint8_t* rev_no);
 
 i2c_rc read_control_reg(int light_sensor_fd, uint8_t* control_reg_byte);
 
 i2c_rc write_control_reg(int light_sensor_fd, uint8_t* control_reg_byte);
+
+i2c_rc light_sensor_write_reg(int light_sensor_fd, uint8_t reg_addr, uint8_t* val);
+
+i2c_rc write_timing_reg(int light_sensor_fd,  gain_t adc_gain, integ_time_t integ_time, uint8_t if_manual);
+
+i2c_rc read_timing_reg(int light_sensor_fd,  gain_t* adc_gain, integ_time_t* integ_time, uint8_t* if_manual);
+
+i2c_rc light_sensor_read_reg(int light_sensor_fd, uint8_t reg_addr, uint8_t* val);
 
 i2c_rc turn_on_light_sensor(int light_sensor_fd);

@@ -1,5 +1,4 @@
-
-/*  
+/*
  *  Name        : light_sensor.c
  *  
  *  
@@ -11,7 +10,7 @@
  * 
  *  Authors     : Ashwath Gundepally, CU, ECEE
  *                Sahana Sadagopan, CU, ECEE
- */                
+ */
 
 #include <stdio.h>
 #include <stdint.h>
@@ -21,20 +20,15 @@
 #include "i2c.h"
 #include "light_sensor.h"
 
-#define DEV_ADDRESS         0x39
-#define CMD_REG             0x80
-#define CONTROL_REG_ADDR    0x00
-#define CONTROL_REG_ON      0x03
-#define CONTROL_REG_OFF     0x00
-#define ID_REG_ADDRESS      0x0A 
 
 int main()
 {
     int light_sensor_fd;
     i2c_rc function_rc;
-
-
+    
+    
     function_rc=i2c_init(DEV_ADDRESS, &light_sensor_fd);
+    
     if(function_rc!=SUCCESS)
     {
         perror("i2c init failed\n");
@@ -59,23 +53,28 @@ int main()
     }
     
     printf("part no:%"PRIu8"\nrev no:%"PRIu8"\n", part_no, rev_no);
-     
+        
+    write_timing_reg(light_sensor_fd, MIN_GAIN, MODERATE_INTEG_TIME, 0); 
+
+    gain_t adc_gain;
+    integ_time_t integ_time;
+    uint8_t if_manual;
+
+    read_timing_reg(light_sensor_fd, &adc_gain, &integ_time, &if_manual); 
+    
+
+    printf("\n\nadc_gain:%d, integ_time:%d, if_manual:%d\n\n", adc_gain, integ_time, if_manual);   
+        
     return 0;
 }
 
 i2c_rc read_id_reg(int light_sensor_fd, uint8_t* part_no, uint8_t* rev_no)
 {
-    /* write to the cmd register with the ID register's address */
-    uint8_t cmd_id_reg=(CMD_REG|ID_REG_ADDRESS);
-    if(i2c_write(&cmd_id_reg, light_sensor_fd)!=SUCCESS)
-        return FAILURE;
-        
-    /* this read will be directed at the ID register */
     uint8_t id_reg_val;
-    if(i2c_read(&id_reg_val, light_sensor_fd)!=SUCCESS)
+    
+    if(light_sensor_read_reg(light_sensor_fd, ID_REG_ADDRESS, &id_reg_val)!=SUCCESS)
         return FAILURE;
-        
-        
+    
     /* the first 4 bits don't form the part number */
     *part_no=(id_reg_val>>4); 
     
@@ -92,14 +91,7 @@ i2c_rc read_id_reg(int light_sensor_fd, uint8_t* part_no, uint8_t* rev_no)
 i2c_rc read_control_reg(int light_sensor_fd, uint8_t* control_reg_byte)
 {
 
-    /* write to the cmd register with the control register's address */
-    uint8_t cmd_control_reg=(CMD_REG|CONTROL_REG_ADDR);
-    
-    if(i2c_write(&cmd_control_reg, light_sensor_fd)!=SUCCESS)
-        return FAILURE;
-
-    /* this read will read from the control register */
-    if(i2c_read(control_reg_byte, light_sensor_fd)!=SUCCESS)
+    if(light_sensor_read_reg(light_sensor_fd, CONTROL_REG_ADDR, control_reg_byte)!=SUCCESS)
         return FAILURE;
 
     /* return successfully*/
@@ -109,15 +101,11 @@ i2c_rc read_control_reg(int light_sensor_fd, uint8_t* control_reg_byte)
 
 i2c_rc write_control_reg(int light_sensor_fd, uint8_t* control_reg_byte)
 {
-    /* write to the cmd register with the control register's address */
-    uint8_t cmd_control_reg=(CMD_REG|CONTROL_REG_ADDR);
-    if(i2c_write(&cmd_control_reg, light_sensor_fd)!=SUCCESS)
+    
+    if(light_sensor_write_reg(light_sensor_fd, CONTROL_REG_ADDR, control_reg_byte)!=SUCCESS)
         return FAILURE;
-
-    /* this write will be directed to the control register */
-    if(i2c_read(control_reg_byte, light_sensor_fd)!=SUCCESS)
-        return FAILURE;
-
+    
+    
     /* return successfully*/
     return SUCCESS; 
 }
@@ -149,7 +137,79 @@ i2c_rc turn_on_light_sensor(int light_sensor_fd)
     return SUCCESS;
 }
 
+/* write to the timing register 
+ * this also supports manual timing */
+i2c_rc write_timing_reg(int light_sensor_fd,  gain_t adc_gain, integ_time_t integ_time, uint8_t if_manual)
+{
+    /* check if manual timing is requested */ 
+    if(integ_time==INTEG_NA)
+    {
+        /* create the byte to write using the ADC gain and manual timing val(1/0 to start/stop respectively )*/
+        uint8_t timing_reg_val=(ADC_GAIN_MASK & adc_gain)|(MANUAL_TIMING_MASK & if_manual);
+        /* write byte to the timing register*/        
+        if(light_sensor_write_reg(light_sensor_fd, TIMING_REG_ADDR, &timing_reg_val)!=SUCCESS)
+            return FAILURE;
+        /* return successfully*/    
+        return SUCCESS;
+    }
+
+    /* create the byte to write using the ADC gain and integration time val(MIN:MODERATE:MAX::0:1:2)*/
+    uint8_t timing_reg_val=(ADC_GAIN_MASK & adc_gain) | (INTEG_TIME_MASK & integ_time);
+    
+    /* write the byte to the timing register */ 
+    if(light_sensor_write_reg(light_sensor_fd, TIMING_REG_ADDR, &timing_reg_val)!=SUCCESS)
+        return FAILURE;
+    
+    /* return successfully*/
+    return SUCCESS;
+}
+
+/* read the timing register */
+i2c_rc read_timing_reg(int light_sensor_fd,  gain_t* adc_gain, integ_time_t* integ_time, uint8_t* if_manual)
+{
+    /* first read the register in a uint8_t type */ 
+    uint8_t timing_reg_val;
+    if(light_sensor_read_reg(light_sensor_fd, TIMING_REG_ADDR, &timing_reg_val)!=SUCCESS)
+    {
+        return FAILURE;
+    }
+    
+    /* now get the value of all the params */
+    *adc_gain=(gain_t)(ADC_GAIN_MASK & timing_reg_val);
+    
+    *integ_time=(integ_time_t)(INTEG_TIME_MASK & timing_reg_val);
+    
+    *if_manual=(MANUAL_TIMING_MASK & timing_reg_val); 
 
 
 
+    /* return successfully*/
+    return SUCCESS;
+}
 
+i2c_rc light_sensor_write_reg(int light_sensor_fd, uint8_t reg_addr, uint8_t* val)
+{
+    uint8_t cmd_reg_val=CMD_REG|reg_addr;
+    
+    if(i2c_write(&cmd_reg_val, light_sensor_fd)!=SUCCESS)
+        return FAILURE;
+    
+    if(i2c_write(val, light_sensor_fd)!=SUCCESS)
+        return FAILURE;
+
+    return SUCCESS;
+}
+
+
+i2c_rc light_sensor_read_reg(int light_sensor_fd, uint8_t reg_addr, uint8_t* val)
+{
+    uint8_t cmd_reg_val=CMD_REG|reg_addr;
+    
+    if(i2c_write(&cmd_reg_val, light_sensor_fd)!=SUCCESS)
+        return FAILURE;
+    
+    if(i2c_read(val, light_sensor_fd)!=SUCCESS)
+        return FAILURE;
+    
+    return SUCCESS;
+}
