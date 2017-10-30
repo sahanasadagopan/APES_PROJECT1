@@ -54,20 +54,25 @@ int main()
     
     printf("part no:%"PRIu8"\nrev no:%"PRIu8"\n", part_no, rev_no);
         
-    write_timing_reg(light_sensor_fd, MIN_GAIN, MODERATE_INTEG_TIME, 0); 
+    write_timing_reg(light_sensor_fd, MAX_GAIN, MAX_INTEG_TIME, 0); 
 
-    gain_t adc_gain;
-    integ_time_t integ_time;
-    uint8_t if_manual;
+    //gain_t adc_gain;
+    //integ_time_t integ_time;
+    //uint8_t if_manual;
 
-    read_timing_reg(light_sensor_fd, &adc_gain, &integ_time, &if_manual); 
+    //read_timing_reg(light_sensor_fd, &adc_gain, &integ_time, &if_manual); 
     
 
-    printf("\n\nadc_gain:%d, integ_time:%d, if_manual:%d\n\n", adc_gain, integ_time, if_manual);   
+    //printf("\n\nadc_gain:%d, integ_time:%d, if_manual:%d\n\n", adc_gain, integ_time, if_manual);   
+    
+    uint16_t ch0, ch1;
+
+    read_adc(light_sensor_fd, &ch0, &ch1);
         
     return 0;
 }
-
+/* read's the id register and returns the part no and rev no via 
+ * a ptr*/
 i2c_rc read_id_reg(int light_sensor_fd, uint8_t* part_no, uint8_t* rev_no)
 {
     uint8_t id_reg_val;
@@ -87,7 +92,7 @@ i2c_rc read_id_reg(int light_sensor_fd, uint8_t* part_no, uint8_t* rev_no)
     return SUCCESS;
 }
 
-
+/* read's the control register */
 i2c_rc read_control_reg(int light_sensor_fd, uint8_t* control_reg_byte)
 {
 
@@ -162,6 +167,33 @@ i2c_rc write_timing_reg(int light_sensor_fd,  gain_t adc_gain, integ_time_t inte
     
     /* return successfully*/
     return SUCCESS;
+}
+
+/* read ADC values for both channels and return them via ptrs to uint16 type 
+ * Follow the right protocol, i.e., to read the lower byte before reading the
+ * upper byte of the channel */
+i2c_rc read_adc(int light_sensor_fd, uint16_t* ch0_adc_val, uint16_t* ch1_adc_val)
+{
+    /* get data from channel 0 first */
+    /* read lower byte */
+    uint8_t lower_byte_ch0;
+    if(light_sensor_read_reg(light_sensor_fd, LOWER_BYTE_CH0_ADDR, &lower_byte_ch0)!=SUCCESS)
+        return FAILURE;
+
+    /* read upper byte */
+    uint8_t upper_byte_ch0;
+    if(light_sensor_read_reg(light_sensor_fd, UPPER_BYTE_CH0_ADDR, &upper_byte_ch0)!=SUCCESS)
+        return FAILURE;
+    
+    /* cast the upper byte to a uint16_t type, then do an 8-bit 
+     * shift, an OR with the lower byte will result in the required
+     * 16-bit value */
+    *ch0_adc_val=(((uint16_t)upper_byte_ch0)<<8) | (lower_byte_ch0); 
+    
+    printf("upper_byte_ch0:%"PRIu8"\n lower_byte_ch0:%"PRIu8"\n resulting 16-bit\
+            val:%"PRIu16"\n", upper_byte_ch0, lower_byte_ch0, *ch0_adc_val);
+
+    return SUCCESS; 
 }
 
 /* read the timing register */

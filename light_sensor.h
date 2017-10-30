@@ -31,6 +31,11 @@
 #define MANUAL_TIMING_MASK  0x04
 #define INTEG_TIME_MASK     0x03
 
+/* ADC reg stuff */
+#define LOWER_BYTE_CH0_ADDR 0x0C
+#define UPPER_BYTE_CH0_ADDR 0x0D
+#define LOWER_BYTE_CH1_ADDR 0x0E
+#define UPPER_BYTE_CH1_ADDR 0x0F
 
 
 typedef enum {MIN_INTEG_TIME=0, MODERATE_INTEG_TIME=1, MAX_INTEG_TIME=2, INTEG_NA=3} integ_time_t;
@@ -52,3 +57,5 @@ i2c_rc read_timing_reg(int light_sensor_fd,  gain_t* adc_gain, integ_time_t* int
 i2c_rc light_sensor_read_reg(int light_sensor_fd, uint8_t reg_addr, uint8_t* val);
 
 i2c_rc turn_on_light_sensor(int light_sensor_fd);
+
+i2c_rc read_adc(int light_sensor_fd, uint16_t* ch0_adc_val, uint16_t* ch1_adc_val);
