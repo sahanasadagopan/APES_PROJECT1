@@ -12,7 +12,7 @@ void* light(void *threaddp){
 	/*Opens the DRIVER FILE and reads the data */
 }
 
-void* logger(void *threaddo){
+void* logger(void *threaddp){
 	/*Function waits for the data*/
 	/*OPens a file */
 	/*write the recieved data into the file*/
