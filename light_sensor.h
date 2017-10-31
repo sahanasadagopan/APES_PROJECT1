@@ -37,7 +37,9 @@
 #define LOWER_BYTE_CH1_ADDR 0x0E
 #define UPPER_BYTE_CH1_ADDR 0x0F
 
-
+/* THRESHOLD_LOW register stuff */
+#define THRESH_LOW_LOW_ADDR  0x02
+#define THRESH_LOW_HIGH_ADDR 0x03
 typedef enum {MIN_INTEG_TIME=0, MODERATE_INTEG_TIME=1, MAX_INTEG_TIME=2, INTEG_NA=3} integ_time_t;
 
 typedef enum {MIN_GAIN=0, MAX_GAIN=1} gain_t;
@@ -61,3 +63,11 @@ i2c_rc turn_on_light_sensor(int light_sensor_fd);
 i2c_rc read_adc(int light_sensor_fd, uint16_t* ch0_adc_val, uint16_t* ch1_adc_val);
 
 i2c_rc get_luminosity(int light_sensor_fd, float* luminosity);
+
+i2c_rc light_sensor_read_word_reg(int light_sensor_fd, uint8_t reg_addr, uint16_t* word);
+
+i2c_rc light_sensor_write_word_reg(int light_sensor_fd, uint8_t reg_addr, uint16_t* word);
+
+i2c_rc light_sensor_read_thresh_low_reg(int light_sensor_fd, uint16_t* thresh_low);
+
+i2c_rc light_sensor_write_thresh_low_reg(int light_sensor_fd, uint16_t* thresh_low);

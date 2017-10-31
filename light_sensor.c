@@ -71,8 +71,25 @@ int main()
     
     printf("luminosity is:%f\n\n", luminosity);
     
+    uint16_t thresh_low=400;
+
+    light_sensor_write_thresh_low_reg(light_sensor_fd, &thresh_low);
+    
+    uint16_t thresh_read=0;
+    uint8_t lower_byte=0; 
+    
+    light_sensor_read_reg(light_sensor_fd, THRESH_LOW_LOW_ADDR, &lower_byte);
+    
+    uint8_t upper_byte=0;
+    light_sensor_read_reg(light_sensor_fd, THRESH_LOW_HIGH_ADDR, &upper_byte);
+    
+    thresh_read=(((uint16_t)upper_byte)<<8)|lower_byte;
+
+    printf("thresh written:%"PRIu16"\nthresh read:%"PRIu16"\nlower_byte:%"PRIu8"\nupper_byte:%"PRIu8"\n", thresh_low, thresh_read, lower_byte, upper_byte);
+    
     return 0;
 }
+
 /* read's the id register and returns the part no and rev no via 
  * a ptr*/
 i2c_rc read_id_reg(int light_sensor_fd, uint8_t* part_no, uint8_t* rev_no)
@@ -143,6 +160,9 @@ i2c_rc turn_on_light_sensor(int light_sensor_fd)
     /* return successfully */
     return SUCCESS;
 }
+
+
+
 
 /* write to the timing register 
  * this also supports manual timing */
@@ -313,5 +333,50 @@ i2c_rc light_sensor_read_reg(int light_sensor_fd, uint8_t reg_addr, uint8_t* val
     if(i2c_read(val, light_sensor_fd)!=SUCCESS)
         return FAILURE;
     
+    return SUCCESS;
+}
+
+i2c_rc light_sensor_read_word_reg(int light_sensor_fd, uint8_t reg_addr, uint16_t* word)
+{
+    uint8_t cmd_reg_val=CMD_REG|reg_addr;
+    
+    if(i2c_write(&cmd_reg_val, light_sensor_fd)!=SUCCESS)
+        return FAILURE;
+    
+    if(i2c_read_word(word, light_sensor_fd)!=SUCCESS)
+        return FAILURE;
+    
+    return SUCCESS;
+}
+
+i2c_rc light_sensor_write_word_reg(int light_sensor_fd, uint8_t reg_addr, uint16_t* word)
+{
+    uint8_t cmd_reg_val=CMD_REG|reg_addr;
+    
+    if(i2c_write(&cmd_reg_val, light_sensor_fd)!=SUCCESS)
+        return FAILURE;
+    
+    if(i2c_write_word(word, light_sensor_fd)!=SUCCESS)
+        return FAILURE;
+
+    return SUCCESS;
+}
+
+i2c_rc light_sensor_read_thresh_low_reg(int light_sensor_fd, uint16_t* thresh_low)
+{
+    
+    if(light_sensor_read_word_reg(light_sensor_fd, THRESH_LOW_LOW_ADDR, thresh_low)!=SUCCESS)
+    {
+        return FAILURE;
+    }
+    
+    return SUCCESS;
+}
+
+i2c_rc light_sensor_write_thresh_low_reg(int light_sensor_fd, uint16_t* thresh_low)
+{
+    if(light_sensor_write_word_reg(light_sensor_fd, THRESH_LOW_LOW_ADDR, thresh_low)!=SUCCESS)
+        return FAILURE;
+
     return SUCCESS;
 }

@@ -178,3 +178,26 @@ i2c_rc i2c_read(uint8_t* byte_read, int file)
     /* return  success*/
     return SUCCESS;    
 }
+
+i2c_rc i2c_read_word(uint16_t* word_read, int file)
+{
+    
+    if(read(file, word_read, 2)!=2)
+    {
+        perror("read word failed\n");
+        return FAILURE;
+    }
+
+    return SUCCESS;
+}
+
+i2c_rc i2c_write_word(uint16_t* write_word, int file)
+{
+    if(write(file, write_word, 2)!=2)
+    {
+        perror("write word failed\n");
+        return FAILURE;
+    }
+
+    return SUCCESS;
+}
