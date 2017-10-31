@@ -16,6 +16,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <inttypes.h>
+#include <math.h>
+
 
 #include "i2c.h"
 #include "light_sensor.h"
@@ -64,11 +66,11 @@ int main()
     
 
     //printf("\n\nadc_gain:%d, integ_time:%d, if_manual:%d\n\n", adc_gain, integ_time, if_manual);   
+    float luminosity;
+    get_luminosity(light_sensor_fd, &luminosity);    
     
-    uint16_t ch0, ch1;
-
-    read_adc(light_sensor_fd, &ch0, &ch1);
-        
+    printf("luminosity is:%f\n\n", luminosity);
+    
     return 0;
 }
 /* read's the id register and returns the part no and rev no via 
@@ -192,12 +194,80 @@ i2c_rc read_adc(int light_sensor_fd, uint16_t* ch0_adc_val, uint16_t* ch1_adc_va
     
     printf("upper_byte_ch0:%"PRIu8"\n lower_byte_ch0:%"PRIu8"\n resulting 16-bit\
             val:%"PRIu16"\n", upper_byte_ch0, lower_byte_ch0, *ch0_adc_val);
+    
+    /* get data from channel 1 first */
+    /* read lower byte */
+    uint8_t lower_byte_ch1;
+    if(light_sensor_read_reg(light_sensor_fd, LOWER_BYTE_CH1_ADDR, &lower_byte_ch1)!=SUCCESS)
+        return FAILURE;
 
-    return SUCCESS; 
+    /* read upper byte */
+    uint8_t upper_byte_ch1;
+    if(light_sensor_read_reg(light_sensor_fd, UPPER_BYTE_CH1_ADDR, &upper_byte_ch1)!=SUCCESS)
+        return FAILURE;
+    
+
+    /* cast the upper byte to a uint16_t type, then do an 8-bit
+     * shift, an OR with the lower byte will result in the required
+     * 16-bit value */
+    *ch1_adc_val=(((uint16_t)upper_byte_ch1)<<8) | (lower_byte_ch1); 
+        
+    printf("upper_byte_ch1:%"PRIu8"\n lower_byte_ch1:%"PRIu8"\n resulting 16-bit\
+            val:%"PRIu16"\n", upper_byte_ch1, lower_byte_ch1, *ch1_adc_val);
+    
+    return SUCCESS;
+}
+
+/* get luminosity 
+ * - calls read_adc to get adc count of ch0, ch1
+ * - computes luminosity by calculating the ratio
+ *   and applying the formula as per the datasheet
+ *   */
+i2c_rc get_luminosity(int light_sensor_fd, float* luminosity)
+{
+    
+    uint16_t ch0_adc_count, ch1_adc_count;
+    
+
+    if(read_adc(light_sensor_fd, &ch0_adc_count, &ch1_adc_count)!=SUCCESS)
+        return FAILURE;
+    
+    float ch0_adc_float=ch0_adc_count, ch1_adc_float=ch1_adc_count;
+    
+    printf("ch0 adc count in float:%f, ch1_adc_float:%f\n\n", ch0_adc_float, ch1_adc_float);
+
+    /* cast the result to a float and then assign */    
+    float adc_count_ratio=ch1_adc_float/ch0_adc_float;
+    
+    if((adc_count_ratio>0)&&(adc_count_ratio<=0.50))
+    {
+        *luminosity= (0.0304 *ch0_adc_float) - (0.062 * ch0_adc_float * powf(adc_count_ratio, 1.4));
+    }
+    else if((adc_count_ratio>0.50)&&(adc_count_ratio<=0.61))
+    {
+        *luminosity= (0.0224 * ch0_adc_float) - (0.031 * ch1_adc_float);
+    }
+    else if((adc_count_ratio>0.61)&&(adc_count_ratio<=0.80))
+    {
+        *luminosity= (0.0128 * ch0_adc_float) - (0.0153 * ch1_adc_float);
+    }
+    else if((adc_count_ratio>0.80) && (adc_count_ratio<=1.30))
+    {
+        *luminosity= (0.00146 * ch0_adc_float) - (0.00112 * ch1_adc_float);
+    }
+    else if(adc_count_ratio > 1.30)
+        *luminosity=0;
+    else
+        return FAILURE;
+    
+    
+
+    return SUCCESS;
+    
 }
 
 /* read the timing register */
-i2c_rc read_timing_reg(int light_sensor_fd,  gain_t* adc_gain, integ_time_t* integ_time, uint8_t* if_manual)
+i2c_rc read_timing_reg(int light_sensor_fd, gain_t* adc_gain, integ_time_t* integ_time, uint8_t* if_manual)
 {
     /* first read the register in a uint8_t type */ 
     uint8_t timing_reg_val;

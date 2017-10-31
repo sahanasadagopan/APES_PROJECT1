@@ -59,3 +59,5 @@ i2c_rc light_sensor_read_reg(int light_sensor_fd, uint8_t reg_addr, uint8_t* val
 i2c_rc turn_on_light_sensor(int light_sensor_fd);
 
 i2c_rc read_adc(int light_sensor_fd, uint16_t* ch0_adc_val, uint16_t* ch1_adc_val);
+
+i2c_rc get_luminosity(int light_sensor_fd, float* luminosity);
