@@ -168,7 +168,7 @@ i2c_rc i2c_read(uint8_t* byte_read, int file)
      * reads will probably not work. 
      * the I2C module will take care of following other requirements
      * of the I2C protocol */
-    if (read(file, byte_read, 2) != 2) 
+    if (read(file, byte_read, 1) != 1) 
     {
         /*ERROR HANDLING: i2c transaction failed */
         perror("read failed\n");
