@@ -1,5 +1,5 @@
 /*  
- *  Name        : light_sensor.c
+ *  Name        : light_sensor.h
  *  
  *  
  *  Description : Light Sensor I2C driver header file 
@@ -17,7 +17,7 @@
 #define DEV_ADDRESS         0x39
 
 #define CMD_REG             0x80
-#define CMD_REG_WORD        0x82
+#define CMD_REG_WORD        0xA0
 
 #define CONTROL_REG_ADDR    0x00
 #define CONTROL_REG_ON      0x03

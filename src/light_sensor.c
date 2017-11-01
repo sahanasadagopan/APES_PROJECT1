@@ -20,10 +20,13 @@
 #include <unistd.h>
 #include <linux/i2c-dev.h>
 #include <linux/i2c.h>
-#include "i2c.h"
-#include "light_sensor.h"
 
+#include "../includes/i2c.h"
+#include "../includes/light_sensor.h"
 
+#define TEST_APIS
+
+#ifdef  TEST_APIS
 int main()
 {
     int light_sensor_fd;
@@ -45,72 +48,23 @@ int main()
         perror("turn light sensor on routine failed\n");
         exit(0);
     }
-        
-    uint8_t part_no, rev_no;
-    function_rc=read_id_reg(light_sensor_fd, &part_no, &rev_no);
-    
-    if(function_rc!=SUCCESS)
-    {    
-        perror("read id failure\n");
-        exit(0);
-    }
-    
-    printf("part no:%"PRIu8"\nrev no:%"PRIu8"\n", part_no, rev_no);
-        
-    write_timing_reg(light_sensor_fd, MAX_GAIN, MAX_INTEG_TIME, 0); 
 
-    float luminosity;
-    get_luminosity(light_sensor_fd, &luminosity);    
-    
-    printf("luminosity is:%f\n\n", luminosity);
-    
-/*
-    read/write word testing:
+//    read/write word testing:
 
     uint16_t thresh_low=400;
-
+    printf("thresh written:%"PRIu16"\n", thresh_low);
+     
     light_sensor_write_thresh_low_reg(light_sensor_fd, &thresh_low);
     
     uint16_t thresh_read=0;
-    uint8_t lower_byte=0; 
     
     light_sensor_read_thresh_low_reg(light_sensor_fd, &thresh_read);
+    printf("thresh read:%"PRIu16"\n", thresh_read);
       
-//    light_sensor_read_reg(light_sensor_fd, THRESH_LOW_LOW_ADDR, &lower_byte);
     
-    uint8_t upper_byte=0;
-//    light_sensor_read_reg(light_sensor_fd, THRESH_LOW_HIGH_ADDR, &upper_byte);
-    
-    //thresh_read=(((uint16_t)upper_byte)<<8)|lower_byte;
-*/
-    /* read/write to interrupt control register testing */
-    uint8_t number_of_cycles_written=10;
-    if(light_sensor_write_ic_register(light_sensor_fd, INTERRUPT_ENABLE, 10)!=SUCCESS)
-    {
-        perror("write to ic fails\n");
-        exit(1);
-    }
-
-    ic_t if_enabled;
-    uint8_t number_of_cycles;
-
-
-    if(light_sensor_read_ic_register(light_sensor_fd, &if_enabled, &number_of_cycles)!=SUCCESS)
-    {
-        perror("read to ic fails\n");
-        exit(1);
-    }
-    
-    if(if_enabled==INTERRUPT_ENABLE)
-        printf("iterrupt is enabled\n");
-
-
-    if(number_of_cycles==number_of_cycles_written)    
-        printf("what's read is what was written\n");
-
     return 0;
 }
-
+#endif
 /* read's the id register and returns the part no and rev no via 
  * a ptr*/
 i2c_rc read_id_reg(int light_sensor_fd, uint8_t* part_no, uint8_t* rev_no)
@@ -233,7 +187,7 @@ i2c_rc read_adc(int light_sensor_fd, uint16_t* ch0_adc_val, uint16_t* ch1_adc_va
     *ch0_adc_val=(((uint16_t)upper_byte_ch0)<<8) | (lower_byte_ch0); 
     
     printf("upper_byte_ch0:%"PRIu8"\n lower_byte_ch0:%"PRIu8"\n resulting 16-bit\
-            val:%"PRIu16"\n", upper_byte_ch0, lower_byte_ch0, *ch0_adc_val);
+    val:%"PRIu16"\n", upper_byte_ch0, lower_byte_ch0, *ch0_adc_val);
     
     /* get data from channel 1 first */
     /* read lower byte */
@@ -370,26 +324,27 @@ i2c_rc light_sensor_read_reg(int light_sensor_fd, uint8_t reg_addr, uint8_t* val
 /* Returns a word at the given address
  *
  * -just does two consecutive single byte reads and 
- *  doesn't a word as the name suggests increments 
- *  the address for the consecutive read 
+ *  doesn't read a word as the name suggests. 
+ * -increments the address for the consecutive read. 
  *  */
 i2c_rc light_sensor_read_word_reg(int light_sensor_fd, uint8_t reg_addr, uint16_t* word)
 {
     /* read byte at reg_addr first */
     uint8_t cmd_reg_val=CMD_REG|reg_addr;
-   
+    
 
     if(i2c_write(&cmd_reg_val, light_sensor_fd)!=SUCCESS)
         return FAILURE;
-
+    
     uint8_t lower_byte=0;
     
     if(i2c_read(&lower_byte, light_sensor_fd)!=SUCCESS)
         return FAILURE;
     
-    /* read byte at reg_addr+1 */ 
-    cmd_reg_val=(CMD_REG)|(reg_addr+1);
+    /* read upper byte at reg_addr+1 */
+    cmd_reg_val=CMD_REG|(reg_addr+1);
     
+
     if(i2c_write(&cmd_reg_val, light_sensor_fd)!=SUCCESS)
         return FAILURE;
     
@@ -403,21 +358,29 @@ i2c_rc light_sensor_read_word_reg(int light_sensor_fd, uint8_t reg_addr, uint16_
     
     *word=(*word)|(((uint16_t)upper_byte)<<8);
     
-    printf("thresh read:%"PRIu16"\nlower_byte:%"PRIu8"\nupper_byte:%"PRIu8"\n",  *word, lower_byte, upper_byte);
      
     return SUCCESS;
 }
 
-/* a failed attempt to write a word 
- * to the given address using 
- * the smbus API calls*/
+/* writes calls i2c_write_word to do a write
+ * 2-byte write.
+ * pass the cmd, and the word to write in a
+ * 3-byte buff along with the fd*/
 i2c_rc light_sensor_write_word_reg(int light_sensor_fd, uint8_t reg_addr, uint16_t* word)
 {
     /* create cmd to address the threshold low reg as a word (and not a byte) */
     uint8_t cmd_reg_val=CMD_REG_WORD|reg_addr;
-    
-    /* where is this defined? no idea. the page about i2c on kernel.org mentions this */   
-    //i2c_smbus_write_word_data(light_sensor_fd, cmd_reg_val, *word);
+    /* create the buffer to write to the bus, add cmd and word */
+    uint8_t buff[3];
+    buff[0]=cmd_reg_val;
+    *((uint16_t*)&buff[1]) = *word;
+
+    /* call i2c write */
+    if(i2c_write_word(&buff[0], light_sensor_fd)!=SUCCESS)
+    {
+        perror("write word failed\n");
+        exit(0);
+    }
     
     /* return successfully */
     return SUCCESS;

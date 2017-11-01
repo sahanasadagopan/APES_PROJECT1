@@ -22,7 +22,7 @@
 #include <linux/i2c-dev.h>
 #include <inttypes.h>
 
-#include "i2c.h"
+#include "../includes/i2c.h"
 
 
 
@@ -168,7 +168,7 @@ i2c_rc i2c_read(uint8_t* byte_read, int file)
      * reads will probably not work. 
      * the I2C module will take care of following other requirements
      * of the I2C protocol */
-    if (read(file, byte_read, 2) != 2) 
+    if (read(file, byte_read, 1) != 1) 
     {
         /*ERROR HANDLING: i2c transaction failed */
         perror("read failed\n");
@@ -177,4 +177,19 @@ i2c_rc i2c_read(uint8_t* byte_read, int file)
     
     /* return  success*/
     return SUCCESS;    
+}
+
+/* do a 3-byte write on the bus
+ * 1st byte is cmd that has a reg_addr, 
+ * and the word bit high.
+ * The next two byte should be the words*/
+i2c_rc i2c_write_word(uint8_t* write_word, int file)
+{
+    if(write(file, write_word, 3)!=3)
+    {
+        perror("write word failed\n");
+        return FAILURE;
+    }
+
+    return SUCCESS;
 }
