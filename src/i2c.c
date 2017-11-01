@@ -37,8 +37,8 @@
  *                  It's scope is limited to this file because
  *                  only i2c_init will ever call it.
  * 
- * Args         :   None. Because there is only one usable bus 
- *                  running i2c on the BBG.
+ * Args         :   int* file : The file descriptor which is 
+ *                  opened to read the bus data values
  * 
  * Returns      :   SUCCESS: When the file descriptor returned
  *                           by open is non negative        
@@ -66,7 +66,7 @@ static i2c_rc open_i2c_bus(int* file)
     return SUCCESS;
 }
 
-/* Name         :   i2c_rc i2c_init(uint8_t dev_addr)
+/* Name         :   i2c_rc i2c_init(uint8_t dev_addr,int* file)
  * 
  * 
  * Description  :   This function initializes I2C with the 
@@ -78,6 +78,8 @@ static i2c_rc open_i2c_bus(int* file)
  * 
  * Args         :   uint8_t dev_addr: 1 byte device address of the
  *                  I2C slave in consideration- the sensor. 
+ *                  int* file : The file descriptor which is opened
+ *                  for the data transfer
  * 
  * Returns      :   SUCCESS: When the call to open_i2c_bus is 
  *                           successful, and the return from
@@ -109,7 +111,7 @@ i2c_rc i2c_init(uint8_t dev_addr, int* file)
 }
 
 
-/* Name         :   i2c_rc i2c_write(uint8_t* byte_to_write)
+/* Name         :   i2c_rc i2c_write(uint8_t* byte_to_write,int file)
  * 
  * 
  * Description  :   Writes a byte to the I2C device. Takes a ptr
@@ -117,6 +119,7 @@ i2c_rc i2c_init(uint8_t dev_addr, int* file)
  * 
  * Args         :   uint8_t* byte_to_write: ptr to the byte
  *                  to be written. 
+ *                  int file: File descriptor to which it is opened.
  * 
  * Returns      :   SUCCESS: When the call to the write sytem
  *                  call returns 1 (the number of bytes written) 
@@ -143,7 +146,7 @@ i2c_rc i2c_write(uint8_t* byte_to_write, int file)
     return SUCCESS;    
 }
 
-/* Name         :   i2c_rc i2c_write(uint8_t* byte_to_write)
+/* Name         :   i2c_rc i2c_write(uint8_t* byte_to_write,int file)
  * 
  * 
  * Description  :   Reads a byte from the I2C device. Takes a ptr
@@ -151,6 +154,7 @@ i2c_rc i2c_write(uint8_t* byte_to_write, int file)
  * 
  * Args         :   uint8_t* read_byte: ptr to the byte
  *                  to be read into. 
+ *                  int file : The file descriptor to which is opened.
  * 
  * Returns      :   SUCCESS: When the call to the read sytem
  *                  call returns 1 (the number of bytes written) 
