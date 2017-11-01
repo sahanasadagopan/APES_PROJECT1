@@ -15,7 +15,8 @@
 #include "temp.h"
 
 #define DEV_ADDR 0X48
-
+temp_ret read_register(int temp_fd, uint8_t pointer_reg_conf);
+temp_ret write_register(int temp_fd,uint8_t pointer_reg_conf,uint8_t value);
 /*global variable*/
 
 int file; 
@@ -56,20 +57,30 @@ void signal_handler(int signum)
 
 
 
-temp_ret pointer_reg(int reg){
-
+temp_ret pointer_reg(int reg,int temp_fd){
+	uint8_t *buf = malloc(sizeof(uint8_t)*2);
+	uint8_t buf1 = 0x60;
+	uint8_t buf2 = 0xa0;
+	uint16_t temp;
+	unsigned char MSB,LSB,lsb2;
 	if(reg == 1){
 		uint8_t pointer_reg_conf = POINTER_REG|TEMP_REG_ADDR;
+		i2c_write(&pointer_reg_conf,temp_fd);
 	}
 	if(reg == 2){
+		
 		uint8_t pointer_reg_conf = POINTER_REG|CONF_REG_ADDR;
+		read_register(temp_fd,pointer_reg_conf);
+		
 	}
 	if(reg == 3){
 		uint8_t pointer_reg_conf = POINTER_REG|TLOW_REG_ADDR;
+		read_register(temp_fd,pointer_reg_conf);
+
 	}
 	if(reg == 4){
-	
-	uint8_t pointer_reg_conf = POINTER_REG|THIGH_REG_ADDR;
+		uint8_t pointer_reg_conf = POINTER_REG|THIGH_REG_ADDR;
+		i2c_write(&pointer_reg_conf,temp_fd);
 	}
 
 	return SUCCESS_TEMP;
@@ -88,10 +99,10 @@ temp_ret pointer_reg(int reg){
 
 
 
-float set_resolution(char* value){
+float set_resolution(char* value,int temp_fd){
 	float resolution=0;
-	pointer_reg(2);
-	printf("value of input %s\n",value);
+	pointer_reg(2,temp_fd);
+	uint8_t *buf = malloc(sizeof(uint8_t)*2);
 	if(value == "max"){
 		printf("got value\n");
 		uint16_t CONF_REG = CONF_REG_MAX_RESOLUTION;
@@ -106,48 +117,89 @@ float set_resolution(char* value){
 	return resolution;
 	
 }
-int main(){
 
-   
-  char *bus = "/dev/i2c-2"; /* Pins P9_19 and P9_20 */
-  int addr = 0x48;          /* The I2C address of TMP102 */
-  uint8_t *buf = malloc(sizeof(uint8_t)*2);
-  //char buf[2] = {0};
-  float temp;
-  unsigned char MSB, LSB;
+temp_ret read_register(int temp_fd, uint8_t pointer_reg_conf){
+	uint8_t *buf = malloc(sizeof(uint8_t)*2);
+	i2c_write(&pointer_reg_conf,temp_fd);
+	i2c_read(buf,temp_fd);
+	printf("resolution set 1st bit%x\n",buf[0]);
+	printf("resol 2nd bit %x\n ", buf[1]);	
+	free(buf);
 
-  float f,c;
-  float resolution=0.00;
-  i2c_init(DEV_ADDR);
- /* Register the signal handler */
- signal(SIGINT, signal_handler);
- resolution=set_resolution("max");
- printf("resolution %f\n", resolution);
- while(1)
-   {
-	if((i2c_read(buf))!=SUCCESS){
-		perror("Reading error\n");
-         }
+}
+
+temp_ret write_register(int temp_fd,uint8_t pointer_reg_conf,uint8_t value){
+
+	uint8_t *buf = malloc(sizeof(uint8_t)*2);
+	i2c_write(&pointer_reg_conf,temp_fd);
+	printf("The register written %x \n",pointer_reg_conf);
+	i2c_write(&value,temp_fd);
+	printf("value to the reg %x \n",value);
+	free(buf);
+
+}
+
+
+temp_ret temp_register(float resolution,int temp_fd){
+	unsigned char MSB, LSB;
+	float temp;
+	float f,c;
+	pointer_reg(1,temp_fd);
+	uint8_t *buf = malloc(sizeof(uint8_t)*2);
+	int count =0;
+	while(count <10)
+   	{
+		if((i2c_read(buf,temp_fd))!=SUCCESS){
+			perror("Reading error\n");
+         	}
 	//printf("buf value %d",buf);
      // Using I2C Read 
-	else {
-	printf("buf value %d",buf);
-       MSB = buf[0];
-       LSB = buf[1];
+		else {
+			printf("buf value %x",buf[0]);
+			printf("buf value %x",buf[1]);
+       			MSB = buf[0];
+       			LSB = buf[1];
 
-       /* Convert 12bit int using two's compliment */
-       /* Credit: http://bildr.org/2011/01/tmp102-arduino/ */
-       temp = ((MSB << 8) | LSB) >> 4;
+       	/* Convert 12bit int using two's compliment */
+        /* Credit: http://bildr.org/2011/01/tmp102-arduino/ */
+       			temp = ((MSB << 8) | LSB) >> 4;
 
-       c = temp*resolution;
-       f = (1.8 * c) + 32;
+       			c = temp*resolution;
+       			f = (1.8 * c) + 32;
 
-       printf("Temp Fahrenheit: %f Celsius: %f\n", f, c);
-     }
+       			printf("Temp Fahrenheit: %f Celsius: %f\n", f, c);
+     			}
+		count++;
+	}
+	
+}
 
-     sleep(1);
-   }
+temp_ret tlow_reg_read(int temp_fd){
+	
+	pointer_reg(3,temp_fd);
+	
+
+}
+
+temp_ret thigh_reg_read(int temp_fd){
+
+	pointer_reg(4,temp_fd);
+}
 
 
+int main(){
 
+   int temp_fd;
+  char *bus = "/dev/i2c-2"; /* Pins P9_19 and P9_20 */
+  //int addr = 0x48;          /* The I2C address of TMP102 */
+  //char buf[2] = {0};
+ 
+  float resolution=0.00;
+  i2c_init(DEV_ADDR,&temp_fd);
+  /*Register the signal handler */
+ resolution=set_resolution("max",temp_fd);
+ printf("resolution %f\n", resolution);
+ temp_register(resolution,temp_fd);
+ //signal(SIGINT, signal_handler);
+ sleep(1);
 }

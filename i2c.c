@@ -168,7 +168,7 @@ i2c_rc i2c_read(uint8_t* byte_read, int file)
      * reads will probably not work. 
      * the I2C module will take care of following other requirements
      * of the I2C protocol */
-    if (read(file, byte_read, 1) != 1) 
+    if (read(file, byte_read, 2) != 2) 
     {
         /*ERROR HANDLING: i2c transaction failed */
         perror("read failed\n");
@@ -177,27 +177,4 @@ i2c_rc i2c_read(uint8_t* byte_read, int file)
     
     /* return  success*/
     return SUCCESS;    
-}
-
-i2c_rc i2c_read_word(uint16_t* word_read, int file)
-{
-    
-    if(read(file, word_read, 2)!=2)
-    {
-        perror("read word failed\n");
-        return FAILURE;
-    }
-
-    return SUCCESS;
-}
-
-i2c_rc i2c_write_word(uint16_t* write_word, int file)
-{
-    if(write(file, write_word, 2)!=2)
-    {
-        perror("write word failed\n");
-        return FAILURE;
-    }
-
-    return SUCCESS;
 }
