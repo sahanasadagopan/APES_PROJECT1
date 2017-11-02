@@ -47,8 +47,8 @@ static volatile sig_atomic_t count_temp=1;
 static volatile sig_atomic_t count_decision=1;
 static volatile sig_atomic_t count_log=1;
 static volatile sig_atomic_t count_light=1;
-pthread_cond_t hcond;
-pthread_cond_t hdcond;
+pthread_cond_t decisioncond;
+pthread_cond_t tempcond;
 pthread_cond_t logcond;
 pthread_cond_t lightcond;
 
@@ -90,15 +90,55 @@ void log_ls_id(uint8_t part_no, uint8_t rev, message_t* log_id)
     log_id->length=strlen(log_id->message)+sizeof(log_id->log_level)+sizeof(log_id->timestamp) + 1; 
 }
 
+void log_ts_id(uint8_t data,message_t* log_id){
+	gettimeofday(&log_id->timestamp,NULL);
+	strcpy(log_id->thread_name,"temperature sensor");
+	log_id->log_level=LOG_INFO;
+
+	sprintf(log_id->message,"%s: Temperature is %d",log_id->thread_name,data);
+	log_id->length = strlen(log_id->message)+sizeof(log_id->log_level)+sizeof(log_id->timestamp) +1;
+}
+
 void *temperature(void *threadp){
 	printf("got in temp thread\n");
-	while(1){
-		
+	uint8_t temp_value = 25;
+	message_t temp_message;
+
+	log_ts_id(temp_value, &temp_message); 
+    
+    mqd_t logger_queue;
+
+    struct mq_attr logger_queue_attr;
+
+    logger_queue_attr.mq_flags=0;
+
+    logger_queue_attr.mq_maxmsg=MAX_MSGS_IN_LOG_QUEUE;
+    logger_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
+
+    //sem_wait(&temp_sem);
+    logger_queue=mq_open(LOG_QUEUE_NAME, O_RDWR, 666, &logger_queue_attr);
+    
+    
+    if(logger_queue==(mqd_t)-1)
+    {
+        perror("mq in light thread open failed");
+        exit(0);
+    }
+   
+
+	while(1){	
+
+		if(mq_send(logger_queue, (char*)&temp_message, MAX_MSG_SIZE_LOG_QUEUE, 0)==-1)
+        {
+            perror("mq_send failed");
+            exit(0);
+        }
+        printf("the message sent:%s\n", temp_message.message);
 		pthread_mutex_lock(&temp_lock);
 		//printf("temperature thread got mutex\n");
 		if(count_temp != 1){
 
-			pthread_cond_signal(&hdcond);
+			pthread_cond_signal(&tempcond);
 			count_temp = 1;
 
 			printf("temperature Thread sent signal\n");
@@ -202,7 +242,7 @@ void *decision(void *threadp){
 		if(count_decision != 1){
 			
 
-			pthread_cond_signal(&hcond);
+			pthread_cond_signal(&decisioncond);
 			count_decision = 1;
 			printf("decision Thread sent signal\n");	
 
@@ -274,6 +314,8 @@ void main(int argc,char **argv){
     struct timespec heartbeat_time;
     struct timeval tp;
 
+    /*message queue initialisations*/
+
 	/*mainpid=getpid();
 	rc=sched_getparam(mainpid,&main_param);
 	if(rc){
@@ -320,7 +362,7 @@ void main(int argc,char **argv){
 		heartbeat_time.tv_sec +=WAIT_TIME_SECONDS;
 		if(count_temp == 1){
 			count_temp =0;
-			rc=pthread_cond_timedwait(&hdcond,&temp_lock,&heartbeat_time);
+			rc=pthread_cond_timedwait(&tempcond,&temp_lock,&heartbeat_time);
 			if(rc==ETIMEDOUT){
 				printf("wait timed out!\n");
 				pthread_mutex_unlock(&temp_lock);
@@ -339,7 +381,7 @@ void main(int argc,char **argv){
 		heartbeat_time.tv_sec +=WAIT_TIME_SECONDS;
 		if(count_decision == 1){
 			count_decision = 0;
-			rc=pthread_cond_wait(&hcond,&decision_mutex);
+			rc=pthread_cond_timedwait(&decisioncond,&decision_mutex,&heartbeat_time);
 			if(rc==ETIMEDOUT){
 				printf("wait timed out!\n");
 				pthread_mutex_unlock(&decision_mutex);
@@ -355,7 +397,7 @@ void main(int argc,char **argv){
 		heartbeat_time.tv_sec +=WAIT_TIME_SECONDS;
 		if(count_log == 1){
 			count_log = 0;
-			rc=pthread_cond_wait(&logcond,&log_mutex);
+			rc=pthread_cond_timedwait(&logcond,&log_mutex,&heartbeat_time);
 			if(rc==ETIMEDOUT){
 				printf("wait timed out!\n");
 				pthread_mutex_unlock(&log_mutex);
@@ -371,7 +413,7 @@ void main(int argc,char **argv){
 		heartbeat_time.tv_sec +=WAIT_TIME_SECONDS;
 		if(count_light == 1){
 			count_light = 0;
-			rc=pthread_cond_wait(&lightcond,&light_mutex);
+			rc=pthread_cond_timedwait(&lightcond,&light_mutex,&heartbeat_time);
 			if(rc==ETIMEDOUT){
 				printf("wait timed out!\n");
 				pthread_mutex_unlock(&light_mutex);
