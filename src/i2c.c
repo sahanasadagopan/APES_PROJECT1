@@ -197,3 +197,42 @@ i2c_rc i2c_write_word(uint8_t* write_word, int file)
 
     return SUCCESS;
 }
+
+/* Name         :   i2c_rc i2c_read(uint8_t* byte_read,int file)
+ * 
+ * 
+ * Description  :   Reads a byte from the I2C device. Takes a ptr
+ *                  to the byte in which the value will be stored.
+ * 
+ * Args         :   uint8_t* byte_read: ptr to the byte
+ *                  to be read into. 
+ *                  int file : The file descriptor to which is opened.
+ * 
+ * Returns      :   SUCCESS: When the call to the read sytem
+ *                  call returns 1 (the number of bytes written) 
+ *                                 
+ * 
+ *                  FAILURE: When read returns something other
+ *                           than 1.
+ * 
+ * */
+
+i2c_rc i2c_read_word(uint8_t* byte_read, int file)
+{
+    
+    /* read a byte on the bus using the read system call,
+     * this is just like reading from a file, except multibyte
+     * reads will probably not work. 
+     * the I2C module will take care of following other requirements
+     * of the I2C protocol */
+    if (read(file, byte_read, 2) != 2) 
+    {
+        /*ERROR HANDLING: i2c transaction failed */
+        perror("read failed\n");
+        return FAILURE;
+    }
+    
+    /* return  success*/
+    return SUCCESS;    
+}
+
