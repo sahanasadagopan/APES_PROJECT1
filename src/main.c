@@ -20,16 +20,10 @@
 pthread_t temperature_sensor_td;
 pthread_t logger_td;
 pthread_t light_sensor_td;
-pthread_t decision_thread;
+pthread_t decision_td;
 
 sem_t temp_sem;
-//#include "temp.h"
-//#include "i2c.h"
-/*Global pthread variable*/
-pthread_t temperature_thread;
-pthread_t logger_thread;
-pthread_t light_thread;
-pthread_t decision_thread;
+
 
 pthread_mutex_t htimelock=PTHREAD_MUTEX_INITIALIZER;
 
@@ -88,6 +82,22 @@ void log_ls_id(uint8_t part_no, uint8_t rev, message_t* log_id)
     log_id->length=strlen(log_id->message)+sizeof(log_id->log_level)+sizeof(log_id->timestamp) + 1; 
 }
 
+void *temperature(void *threadp){
+	printf("got in temp thread\n");
+	while(1){
+		//	usleep(100000);
+		pthread_mutex_lock(&htimelock);
+		//printf("temperature thread got mutex\n");
+		if(count_temp != 1){
+
+			pthread_cond_signal(&hdcond);
+			count_temp = 1;
+
+			printf("temperature Thread sent signal\n");
+		}
+		pthread_mutex_unlock(&htimelock);
+	}
+}
 
 void *light_sensor(void *light_sensor_param)
 {
@@ -157,7 +167,7 @@ heartbeat stuff:
 		pthread_mutex_unlock(&htimelock);
 	}
 */
-}
+//}
 
 void *decision(void *threadp){
 	//pthread_mutex_t htimelock;
@@ -167,7 +177,7 @@ void *decision(void *threadp){
 		//printf("decision thread while loop\n");
 		//usleep(100000);
 		pthread_mutex_lock(&decision_mutex);
-		printf("decision Thread got mutex\n");
+		//printf("decision Thread got mutex\n");
 		
 		if(count_decision != 1){
 			
@@ -186,35 +196,13 @@ void *decision(void *threadp){
 
 }
 
-void main(int argc,char **argv){
-	int ret,rt_max_prio,rt_min_prio,rc;
-	struct sched_param main_param;
-	pthread_attr_t main_attr;
-	pid_t mainpid;
-    
-    struct timespec heartbeat_time;
-    struct timeval tp;
-
-	/*mainpid=getpid();
-	rc=sched_getparam(mainpid,&main_param);
-	if(rc){
-		printf("EROOR:sched_setscheduler %d\n",rc );
-		exit(-1);
-	}
-
-	rt_max_prio = sched_get_priority_max(SCHED_FIFO);
-	rt_min_prio = sched_get_priority_min(SCHED_FIFO);
-	main_param.sched_priority=rt_max_prio;
-	rc=sched_setscheduler(getpid(),SCHED_FIFO,&main_param);
-	if(rc<0) perror("Main program scheduling:\n");
-*/
 
 void *logger(void *logger_param)
 {
     mqd_t logger_queue;
 
     struct mq_attr logger_queue_attr;
-	pthread_attr_init(&decision_attr);
+	/*pthread_attr_init(&decision_attr);
 	pthread_attr_setinheritsched(&decision_attr,PTHREAD_EXPLICIT_SCHED);
 	pthread_attr_setschedpolicy(&decision_attr,SCHED_FIFO);
 	temp_params.sched_priority =  rt_max_prio-2;*/
@@ -249,8 +237,29 @@ void *logger(void *logger_param)
     pthread_exit(0);
 }
 
-int main(int argc,char **argv)
-{
+void main(int argc,char **argv){
+	int ret,rt_max_prio,rt_min_prio,rc;
+	struct sched_param main_param;
+	pthread_attr_t main_attr;
+	pid_t mainpid;
+    
+    struct timespec heartbeat_time;
+    struct timeval tp;
+
+	/*mainpid=getpid();
+	rc=sched_getparam(mainpid,&main_param);
+	if(rc){
+		printf("EROOR:sched_setscheduler %d\n",rc );
+		exit(-1);
+	}
+
+	rt_max_prio = sched_get_priority_max(SCHED_FIFO);
+	rt_min_prio = sched_get_priority_min(SCHED_FIFO);
+	main_param.sched_priority=rt_max_prio;
+	rc=sched_setscheduler(getpid(),SCHED_FIFO,&main_param);
+	if(rc<0) perror("Main program scheduling:\n");
+*/
+
     sem_init(&temp_sem, 0, 0);
 	if(pthread_create(&light_sensor_td, NULL, light_sensor, NULL)<0)
     {
@@ -264,15 +273,10 @@ int main(int argc,char **argv)
 	    exit(1);
     }
 
-    pthread_join(logger_td, NULL);
-	pthread_join(light_sensor_td, NULL);
     
-    return 0;
-}
-=======
-	if(ret = pthread_create(&temperature_thread,(void *)0,temperature,(void *)0)<0)
+	if(ret = pthread_create(&temperature_sensor_td,(void *)0,temperature,(void *)0)<0)
 		perror("Thraed not created\n");
-	if(ret = pthread_create(&decision_thread,(void *)0,decision,(void *)0)<0)
+	if(ret = pthread_create(&decision_td,(void *)0,decision,(void *)0)<0)
 		perror("Thread not created\n");
 	while(1){
 		printf("here in main\n");
@@ -316,7 +320,9 @@ int main(int argc,char **argv)
 		
 		//printf("%d\n",count );
 	}
-	pthread_join(temperature_thread,NULL);
-	pthread_join(decision_thread,NULL);
+	pthread_join(logger_td, NULL);
+	pthread_join(light_sensor_td, NULL);
+	pthread_join(temperature_sensor_td,NULL);
+	pthread_join(decision_td,NULL);
 
 }
