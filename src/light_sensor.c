@@ -24,7 +24,7 @@
 #include "../includes/i2c.h"
 #include "../includes/light_sensor.h"
 
-#define TEST_APIS
+//#define TEST_APIS
 
 #ifdef  TEST_APIS
 int main()

@@ -14,7 +14,7 @@
 #include <stdint.h>
 #include "i2c.h"
 
-#define DEV_ADDRESS         0x39
+#define LIGHT_SENSOR_DEV_ADDR 0x39
 
 #define CMD_REG             0x80
 #define CMD_REG_WORD        0xA0
@@ -52,7 +52,6 @@ typedef enum {MIN_GAIN=0, MAX_GAIN=1} gain_t;
 #define NUMBER_OF_CYCLES_MASK 0x0F
 
 typedef enum {INTERRUPT_ENABLE=0x10, INTERRUPT_DISABLE=0} ic_t; 
-
 
 i2c_rc read_id_reg(int light_sensor_fd, uint8_t* part_no, uint8_t* rev_no);
 
