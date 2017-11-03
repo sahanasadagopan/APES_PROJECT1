@@ -115,24 +115,32 @@ void *temperature(void *threadp){
 	log_ts_id(temp_value, &temp_message); 
     
     mqd_t logger_queue;
+    mqd_t decision_queue;
 
     struct mq_attr logger_queue_attr;
+    struct mq_attr decision_queue_attr;
 
     logger_queue_attr.mq_flags=0;
+    decision_queue_attr.mq_flags=0;
 
     logger_queue_attr.mq_maxmsg=MAX_MSGS_IN_LOG_QUEUE;
-    logger_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
+    decision_queue_attr.mq_maxmsg=MAX_MSGS_IN_LOG_QUEUE;
 
+    logger_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
+    decision_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
     //sem_wait(&temp_sem);
     logger_queue=mq_open(LOG_QUEUE_NAME, O_RDWR, 666, &logger_queue_attr);
-    
-    
     if(logger_queue==(mqd_t)-1)
     {
-        perror("mq in light thread open failed");
+        perror("mq in temperature thread open failed");
         exit(0);
     }
-   
+	decision_queue=mq_open(DECISION_QUEUE_NAME,O_RDWR,666,&decision_queue_attr);
+	if(decision_queue==(mqd_t)-1){
+		perror("mq in temperature thread open failed");
+		exit(0);
+	}
+
 
 	while(1){	
 
@@ -141,6 +149,12 @@ void *temperature(void *threadp){
             perror("mq_send failed");
             exit(0);
         }
+
+        if(mq_send(decision_queue,(char*)&temp_message,MAX_MSG_SIZE_LOG_QUEUE,0)==-1){
+        	perror("mq_send for decision failed");
+        	exit(0);
+        }
+
         //printf("the message sent:%s\n", temp_message.message);
 		pthread_mutex_lock(&temp_lock);
 		//printf("temperature thread got mutex\n");
@@ -165,32 +179,38 @@ void *light_sensor(void *light_sensor_param)
     uint8_t part_no=10, rev=5;
     
     //read_id_reg(light_sensor_fd, &part_no, &rev);
-    
     message_t id_message;
     
     log_ls_id(part_no, rev, &id_message); 
     
     mqd_t logger_queue;
+    mqd_t decision_queue;
 
     struct mq_attr logger_queue_attr;
+    struct mq_attr decision_queue_attr;
 
     logger_queue_attr.mq_flags=0;
+    decision_queue_attr.mq_flags=0;
 
     logger_queue_attr.mq_maxmsg=MAX_MSGS_IN_LOG_QUEUE;
-    logger_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
+    decision_queue_attr.mq_maxmsg=MAX_MSGS_IN_LOG_QUEUE;
 
+    logger_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
+    decision_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
     //sem_wait(&temp_sem);
     logger_queue=mq_open(LOG_QUEUE_NAME, O_RDWR, 666, &logger_queue_attr);
-    
-    
     if(logger_queue==(mqd_t)-1)
     {
         perror("mq in light thread open failed");
         exit(0);
     }
-   
-    
-   
+    decision_queue=mq_open(DECISION_QUEUE_NAME, O_RDWR, 666, &decision_queue_attr);
+    if(decision_queue==(mqd_t)-1)
+    {
+        perror("mq in light thread open failed");
+        exit(0);
+    }
+      
     while(1)
     {
         if(mq_send(logger_queue, (char*)&id_message, MAX_MSG_SIZE_LOG_QUEUE, 0)==-1)
@@ -199,6 +219,11 @@ void *light_sensor(void *light_sensor_param)
             exit(0);
         }
         
+        if(mq_send(decision_queue, (char*)&id_message, MAX_MSG_SIZE_LOG_QUEUE, 0)==-1)
+        {
+            perror("mq_send failed for decision queue");
+            exit(0);
+        }
         //printf("the message sent:%s\n", id_message.message); 
         pthread_mutex_lock(&light_mutex);
 		//printf("decision Thread got mutex\n");
@@ -220,14 +245,28 @@ void *light_sensor(void *light_sensor_param)
 
 void *decision(void *threadp){
 	//pthread_mutex_t htimelock;
-	
-	
+	mqd_t decision_queue;
+	message_t received_decision;
+    struct mq_attr decision_queue_attr;
+    decision_queue_attr.mq_flags=0;
+    decision_queue_attr.mq_maxmsg=MAX_MSGS_IN_LOG_QUEUE;
+    decision_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
+    
+    decision_queue=mq_open(DECISION_QUEUE_NAME, O_RDONLY, 666, &decision_queue_attr);
+    if(decision_queue==(mqd_t)-1)
+    {
+        perror("mq in decision failed");
+        exit(0);
+    }
 	while(1){
-		//printf("decision thread while loop\n");
-		//usleep(100000);
-		pthread_mutex_lock(&decision_mutex);
-		//printf("decision Thread got mutex\n");
 		
+		if(mq_receive(decision_queue, (char*)&received_decision, MAX_MSG_SIZE_LOG_QUEUE, NULL)==-1)
+        {
+            perror("mq_receive failed");
+            exit(0);
+        }
+        printf("the message received:%s\n", received_decision.message);
+		pthread_mutex_lock(&decision_mutex);		
 		if(count_decision != 1){
 			
 
@@ -237,12 +276,7 @@ void *decision(void *threadp){
 
 		}
 		pthread_mutex_unlock(&decision_mutex);
-		
-
 	}
-	
-	
-
 }
 
 
@@ -275,7 +309,7 @@ void *logger(void *logger_param)
             exit(0);
         }
         
-        printf("the message received:%s\n", received_log.message); 
+        //printf("the message received:%s\n", received_log.message); 
 
 
         if(count_log != 1){
@@ -321,20 +355,31 @@ void main(int argc,char **argv){
 	temp_params.sched_priority =  rt_max_prio-2;*/
 	message_t hb_message;
     mqd_t logger_queue;
+    mqd_t decision_queue;
 
     struct mq_attr logger_queue_attr;
-	
+	struct mq_attr decision_queue_attr;
 
     logger_queue_attr.mq_flags=0;
+    decision_queue_attr.mq_flags=0;
 
     logger_queue_attr.mq_maxmsg=MAX_MSGS_IN_LOG_QUEUE;
+    decision_queue_attr.mq_maxmsg=MAX_MSGS_IN_LOG_QUEUE;
+
     logger_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
-    
+    decision_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
+
     logger_queue=mq_open(LOG_QUEUE_NAME, O_CREAT|O_RDWR, 666, &logger_queue_attr);
     if(logger_queue==(mqd_t)-1)
     {
         perror("mq in logger failed");
         exit(0);
+    }
+
+    decision_queue=mq_open(DECISION_QUEUE_NAME,O_CREAT|O_RDWR,0666,&decision_queue_attr);
+    if(decision_queue==(mqd_t)-1){
+    	perror("mq in decision failed in creation");
+    	exit(0);
     }
     //sem_init(&temp_sem, 0, 0);
 	if(pthread_create(&light_sensor_td, NULL, light_sensor, NULL)<0)
@@ -445,12 +490,9 @@ void main(int argc,char **argv){
 			pthread_mutex_unlock(&light_mutex);
 			/*conditional wait for decision thread*/
 		}
-		
-		//printf("%d\n",count );
 	}
 	pthread_join(logger_td, NULL);
 	pthread_join(light_sensor_td, NULL);
 	pthread_join(temperature_sensor_td,NULL);
 	pthread_join(decision_td,NULL);
-
 }
