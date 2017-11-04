@@ -421,10 +421,11 @@ i2c_rc light_sensor_write_ic_register(int light_sensor_fd, ic_t if_enabled, uint
     ic_reg_val=(ic_reg_val)|(number_of_cycles);
     
     printf("byte written to the ic reg:%"PRIu8"\n", ic_reg_val); 
+    
     /* write the byte required */
     if(light_sensor_write_reg(light_sensor_fd, IC_REG_ADDR, &ic_reg_val)!=SUCCESS)
         return FAILURE;
-
+    
     /* return successfully */
     return SUCCESS;     
 }
