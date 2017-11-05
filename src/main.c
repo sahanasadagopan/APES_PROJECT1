@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
@@ -17,6 +18,7 @@
 #include "../includes/temp.h"
 #include "../includes/USRled.h"
 
+#define DEV_ADDR 0X48
 /* Global pthread variable */
 pthread_t temperature_sensor_td;
 pthread_t logger_td;
@@ -27,11 +29,8 @@ sem_t temp_sem;
 
 
 pthread_mutex_t temp_lock=PTHREAD_MUTEX_INITIALIZER;
-
 pthread_mutex_t decision_mutex=PTHREAD_MUTEX_INITIALIZER;
-
 pthread_mutex_t log_mutex=PTHREAD_MUTEX_INITIALIZER;
-
 pthread_mutex_t light_mutex=PTHREAD_MUTEX_INITIALIZER;
 
 /*Pthread Attributes*/
@@ -75,45 +74,23 @@ void print_scheduler(void){
 	}
 }
 
-void heartbeat_api(char* task,message_t* hb_message){
-	gettimeofday(&hb_message->timestamp,NULL);
-	strcpy(hb_message->thread_name,task);
-	hb_message->log_level=LOG_INFO;
-	sprintf(hb_message->message,"%s:is alive",hb_message->thread_name);
-	hb_message->length = strlen(hb_message->message)+sizeof(hb_message->log_level)+ sizeof(hb_message->timestamp) +1; 
-}
-
-void log_ls_id(uint8_t part_no, uint8_t rev, message_t* log_id)
-{
-   // message_t log_id;
-    //struct timeval timestamp;
-    gettimeofday(&log_id->timestamp, NULL);
-    
-    strcpy(log_id->thread_name, "light sensor");
-    
-    log_id->log_level=LOG_INFO;
-
-    sprintf(log_id->message, "%s: The part number is: %d, and the revision is:%d",\
-            log_id->thread_name, part_no, rev);
-    
-    log_id->length=strlen(log_id->message)+sizeof(log_id->log_level)+sizeof(log_id->timestamp) + 1; 
-}
-
-void log_ts_id(uint8_t data,message_t* log_id){
-	gettimeofday(&log_id->timestamp,NULL);
-	strcpy(log_id->thread_name,"temperature sensor");
-	log_id->log_level=LOG_INFO;
-
-	sprintf(log_id->message,"%s: Temperature is %d",log_id->thread_name,data);
-	log_id->length = strlen(log_id->message)+sizeof(log_id->log_level)+sizeof(log_id->timestamp) +1;
-}
-
 void *temperature(void *threadp){
-	printf("got in temp thread\n");
-	uint8_t temp_value = 35;
-	message_t temp_message;
+    int temp_fd;
+    int temp_sensor_fd;
+    log_message_t temp_message;
+    thread_message_t received_message;
+    float temp_value=20;
+    i2c_init(DEV_ADDR,&temp_fd);
+    float resolution;
+    float fahrenheit,celsius,kelvin;
+    resolution=set_resolution(1,temp_fd);
+    printf("resolution %f\n", resolution);
+    temp_register(resolution,temp_fd,&fahrenheit,&celsius,&kelvin);
+    printf("celsius value in temp %f ",celsius);
+    temp_value = celsius;
+    
 
-	log_ts_id(temp_value, &temp_message); 
+    log_ts_id(temp_value,&temp_message);
     
     mqd_t logger_queue;
     mqd_t decision_queue;
@@ -136,25 +113,33 @@ void *temperature(void *threadp){
         perror("mq in temperature thread open failed");
         exit(0);
     }
-	decision_queue=mq_open(DECISION_QUEUE_NAME,O_RDWR,666,&decision_queue_attr);
-	if(decision_queue==(mqd_t)-1){
-		perror("mq in temperature thread open failed");
-		exit(0);
-	}
+    decision_queue=mq_open(DECISION_QUEUE_NAME,O_RDWR,666,&decision_queue_attr);
+    if(decision_queue==(mqd_t)-1){
+	perror("mq in temperature thread open failed");
+	exit(0);
+    }
 
 
-	while(1){	
+	while(1){
+		printf("resolution %f\n", resolution);
+		temp_register(resolution,temp_fd,&fahrenheit,&celsius,&kelvin);
+    		printf("celsius value in temp %f ",celsius);
+    		temp_value = celsius;
+    
 
+    		log_ts_id(temp_value,&temp_message);
+
+		
 		if(mq_send(logger_queue, (char*)&temp_message, MAX_MSG_SIZE_LOG_QUEUE, 0)==-1)
-        {
-            perror("mq_send failed");
-            exit(0);
-        }
+	        {
+        	    perror("mq_send failed");
+            	    exit(0);
+        	}
 
-        if(mq_send(decision_queue,(char*)&temp_message,MAX_MSG_SIZE_LOG_QUEUE,0)==-1){
-        	perror("mq_send for decision failed");
-        	exit(0);
-        }
+        	if(mq_send(decision_queue,(char*)&temp_message,MAX_MSG_SIZE_LOG_QUEUE,0)==-1){
+        		perror("mq_send for decision failed");
+        		exit(0);
+        	}
 
         //printf("the message sent:%s\n", temp_message.message);
 		pthread_mutex_lock(&temp_lock);
@@ -163,10 +148,11 @@ void *temperature(void *threadp){
 
 			pthread_cond_signal(&tempcond);
 			count_temp = 1;
-
 			printf("temperature Thread sent signal\n");
 		}
 		pthread_mutex_unlock(&temp_lock);
+		//temperature_sensor_read_queue(&received_message);
+		//temperature_sensor_parse_message(&received_message,temp_sensor_fd);
 	}
 }
 
@@ -180,7 +166,9 @@ void *light_sensor(void *light_sensor_param)
     uint8_t part_no=10, rev=5;
     
     //read_id_reg(light_sensor_fd, &part_no, &rev);
-    message_t id_message;
+    log_message_t id_message;
+    thread_message_t received_message;
+    thread_message_t request_message;
     
     log_ls_id(part_no, rev, &id_message); 
     
@@ -200,6 +188,7 @@ void *light_sensor(void *light_sensor_param)
     decision_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
     //sem_wait(&temp_sem);
     logger_queue=mq_open(LOG_QUEUE_NAME, O_RDWR, 666, &logger_queue_attr);
+
     if(logger_queue==(mqd_t)-1)
     {
         perror("mq in light thread open failed");
@@ -220,11 +209,11 @@ void *light_sensor(void *light_sensor_param)
             exit(0);
         }
         
-        if(mq_send(decision_queue, (char*)&id_message, MAX_MSG_SIZE_LOG_QUEUE, 0)==-1)
+        /*if(mq_send(decision_queue, (char*)&id_message, MAX_MSG_SIZE_LOG_QUEUE, 0)==-1)
         {
             perror("mq_send failed for decision queue");
             exit(0);
-        }
+        }*/
         //printf("the message sent:%s\n", id_message.message); 
         pthread_mutex_lock(&light_mutex);
 		//printf("decision Thread got mutex\n");
@@ -238,6 +227,13 @@ void *light_sensor(void *light_sensor_param)
 
 		}
 		pthread_mutex_unlock(&light_mutex);
+       // request_data_temp(&request_message);
+       // printf("data for request %d",request_message.what_data);
+		//light_sensor_read_queue(&received_message); 
+    
+    	//light_sensor_parse_message(&received_message, light_sensor_fd); 
+     
+    
     }
      
         
@@ -246,10 +242,10 @@ void *light_sensor(void *light_sensor_param)
 
 void *decision(void *threadp){
 	//pthread_mutex_t htimelock;
-	mqd_t decision_queue;
-	char *parsing_buffer;
-	char *decision_value;
-	message_t received_decision;
+    mqd_t decision_queue;
+    char *parsing_buffer;
+    char *decision_value;
+    log_message_t received_decision;
     struct mq_attr decision_queue_attr;
     decision_queue_attr.mq_flags=0;
     decision_queue_attr.mq_maxmsg=MAX_MSGS_IN_LOG_QUEUE;
@@ -276,19 +272,20 @@ void *decision(void *threadp){
 		}
 		pthread_mutex_unlock(&decision_mutex);
 		if(mq_receive(decision_queue, (char*)&received_decision, MAX_MSG_SIZE_LOG_QUEUE, NULL)==-1)
-        {
-            perror("mq_receive failed");
-            exit(0);
-        }
+        	{
+            		perror("mq_receive failed");
+            		exit(0);
+        	}
+        	printf("the message received:%s\n", received_decision.message);
 		parsing_buffer= received_decision.message;
 		parsing_buffer=strtok(parsing_buffer," ");
 		while(parsing_buffer!=NULL){
-			printf("%s\n",parsing_buffer);
+			//printf("%s\n",parsing_buffer);
 			decision_value=parsing_buffer;
 			parsing_buffer=strtok(NULL," ");	
 		}
 		int val =atoi(decision_value);
-		if(val<30){
+		if(val<28){
 			printf("normal temperature\n");
 		}
 		else{
@@ -318,7 +315,7 @@ void *logger(void *logger_param)
     }
     //sem_post(&temp_sem);
     
-    message_t received_log;
+    log_message_t received_log;
    
 
     while(1)
@@ -330,7 +327,7 @@ void *logger(void *logger_param)
             exit(0);
         }
         
-        //printf("the message received:%s\n", received_log.message); 
+        printf("the message received:%s\n", received_log.message); 
 
 
         if(count_log != 1){
@@ -354,13 +351,22 @@ void main(int argc,char **argv){
     
     struct timespec heartbeat_time;
     struct timeval tp;
-
     /*message queue initialisations*/
+   /* int temp_fd;
+    log_message_t temp_message;
+    float temp_value;
+    i2c_init(DEV_ADDR,&temp_fd);
+    float resolution;
+    float fahrenheit,celsius,kelvin;
+    resolution=set_resolution(1,temp_fd);
+    printf("resolution %f\n", resolution);
+    temp_register(resolution,temp_fd,&fahrenheit,&celsius,&kelvin);
+    printf("celsius value in main %f ",celsius);*/
 
 	/*mainpid=getpid();
 	rc=sched_getparam(mainpid,&main_param);
 	if(rc){
-		printf("EROOR:sched_setscheduler %d\n",rc );
+		printf("ERROR:sched_setscheduler %d\n",rc );
 		exit(-1);
 	}
 
@@ -374,34 +380,49 @@ void main(int argc,char **argv){
 	pthread_attr_setinheritsched(&decision_attr,PTHREAD_EXPLICIT_SCHED);
 	pthread_attr_setschedpolicy(&decision_attr,SCHED_FIFO);
 	temp_params.sched_priority =  rt_max_prio-2;*/
-	message_t hb_message;
+	log_message_t hb_message;
     mqd_t logger_queue;
     mqd_t decision_queue;
+    mqd_t temp_queue;
 
     struct mq_attr logger_queue_attr;
 	struct mq_attr decision_queue_attr;
+    struct mq_attr temp_queue_attr;
 
     logger_queue_attr.mq_flags=0;
     decision_queue_attr.mq_flags=0;
+    temp_queue_attr.mq_flags=0;
 
     logger_queue_attr.mq_maxmsg=MAX_MSGS_IN_LOG_QUEUE;
     decision_queue_attr.mq_maxmsg=MAX_MSGS_IN_LOG_QUEUE;
+    temp_queue_attr.mq_maxmsg=MAX_MSGS_IN_TEMP_QUEUE;
 
     logger_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
     decision_queue_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
+    temp_queue_attr.mq_msgsize=MAX_MSG_SIZE_TEMP_QUEUE;
 
     logger_queue=mq_open(LOG_QUEUE_NAME, O_CREAT|O_RDWR, 666, &logger_queue_attr);
     if(logger_queue==(mqd_t)-1)
     {
-        perror("mq in logger failed");
+        perror("mq in logger failed in log hb");
         exit(0);
     }
+    //mq_close(logger_queue);
 
     decision_queue=mq_open(DECISION_QUEUE_NAME,O_CREAT|O_RDWR,0666,&decision_queue_attr);
     if(decision_queue==(mqd_t)-1){
     	perror("mq in decision failed in creation");
     	exit(0);
     }
+    //mq_close(decision_queue);
+
+    /*temp_queue=mq_open(NEW_QUEUE_NAME,O_CREAT|O_RDWR,0666,&temp_queue_attr);
+    if(temp_queue==(mqd_t)-1){
+        perror("mq in temperature queue creation failed");
+        exit(0);
+    }
+    mq_close(temp_queue);*/
+
     //sem_init(&temp_sem, 0, 0);
 	if(pthread_create(&light_sensor_td, NULL, light_sensor, NULL)<0)
     {

@@ -11,6 +11,9 @@
  *  Authors     : Ashwath Gundepally, CU, ECEE
  *                Sahana Sadagopan, CU, ECEE
  */             
+#ifndef LIGHT_SENSOR_H
+#define LIGHT_SENSOR_H
+
 #include <stdint.h>
 #include "i2c.h"
 
@@ -53,6 +56,42 @@ typedef enum {MIN_GAIN=0, MAX_GAIN=1} gain_t;
 
 typedef enum {INTERRUPT_ENABLE=0x10, INTERRUPT_DISABLE=0} ic_t; 
 
+/* struct to store the attrs associated with the interrupt control register */
+typedef struct
+{
+    /* enum to help with enabling or disabling interrupts */
+    ic_t interrupts;
+
+    /* uint8_t to store the number of cycles after which the interrupt is to be triggered */ 
+    uint8_t number_of_cycles;
+
+}ic_reg_val;
+
+/* struct to store the light sensor's id in */
+typedef struct
+{
+    /* light sensor's part number */
+    uint8_t part_no;
+    
+    /* light sensor's rev number */
+    uint8_t rev_no;
+}ls_id_val;
+
+/* struct to store the various attrs associated with the timing register */
+typedef struct
+{
+    /* gain value for the sensor */
+    gain_t gain_val;
+    
+    /* integration time for the sensor */
+    integ_time_t integ_time;
+
+    /* whether manual cycling is required */
+    uint8_t if_manual;
+
+}timing_reg_val;
+
+/* all the function prototypes */
 i2c_rc read_id_reg(int light_sensor_fd, uint8_t* part_no, uint8_t* rev_no);
 
 i2c_rc read_control_reg(int light_sensor_fd, uint8_t* control_reg_byte);
@@ -84,3 +123,5 @@ i2c_rc light_sensor_write_thresh_low_reg(int light_sensor_fd, uint16_t* thresh_l
 i2c_rc light_sensor_read_ic_register(int light_sensor_fd, ic_t* if_enabled, uint8_t* number_of_cycles);
 
 i2c_rc light_sensor_write_ic_register(int light_sensor_fd, ic_t if_enabled, uint8_t number_of_cycles);
+
+#endif
