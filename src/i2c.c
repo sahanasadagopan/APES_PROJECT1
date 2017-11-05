@@ -92,6 +92,9 @@ static i2c_rc open_i2c_bus(int* file)
  * */
 i2c_rc i2c_init(uint8_t dev_addr, int* file)
 {
+    if(file==NULL)
+        return FAILURE;
+
     /* open the I2C bus first */
     if(open_i2c_bus(file)!=SUCCESS)
     {
@@ -131,6 +134,11 @@ i2c_rc i2c_init(uint8_t dev_addr, int* file)
  * */
 i2c_rc i2c_write(uint8_t* byte_to_write, int file)
 {
+    
+    if(byte_to_write==NULL)
+    {
+        return FAILURE;
+    }
     /* write a byte on the bus using the write system call,
      * this is just like writing to a file, except multibyte
      * writes will probably not work. 
@@ -146,7 +154,8 @@ i2c_rc i2c_write(uint8_t* byte_to_write, int file)
     return SUCCESS;    
 }
 
-/* Name         :   i2c_rc i2c_write(uint8_t* byte_to_write,int file)
+
+/* Name         :   i2c_rc i2c_read(uint8_t* byte_read,int file)
  * 
  * 
  * Description  :   Reads a byte from the I2C device. Takes a ptr
@@ -166,7 +175,9 @@ i2c_rc i2c_write(uint8_t* byte_to_write, int file)
  * */
 i2c_rc i2c_read(uint8_t* byte_read, int file)
 {
-    
+    if(byte_read==NULL)
+        return FAILURE;
+
     /* read a byte on the bus using the read system call,
      * this is just like reading from a file, except multibyte
      * reads will probably not work. 
@@ -189,6 +200,9 @@ i2c_rc i2c_read(uint8_t* byte_read, int file)
  * The next two byte should be the words*/
 i2c_rc i2c_write_word(uint8_t* write_word, int file)
 {
+    if(write_word==NULL)
+        return FAILURE;
+
     if(write(file, write_word, 3)!=3)
     {
         perror("write word failed\n");
@@ -217,15 +231,18 @@ i2c_rc i2c_write_word(uint8_t* write_word, int file)
  * 
  * */
 
-i2c_rc i2c_read_word(uint8_t* byte_read, int file)
+i2c_rc i2c_read_word(uint8_t* word_read, int file)
 {
-    
+    if(word_read==NULL)
+    {
+        return FAILURE;
+    } 
     /* read a byte on the bus using the read system call,
      * this is just like reading from a file, except multibyte
      * reads will probably not work. 
      * the I2C module will take care of following other requirements
      * of the I2C protocol */
-    if (read(file, byte_read, 2) != 2) 
+    if (read(file, word_read, 2) != 2) 
     {
         /*ERROR HANDLING: i2c transaction failed */
         perror("read failed\n");

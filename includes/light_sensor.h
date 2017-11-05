@@ -54,7 +54,10 @@ typedef enum {MIN_GAIN=0, MAX_GAIN=1} gain_t;
 #define INTERRUPT_ENABLE_MASK 0x10
 #define NUMBER_OF_CYCLES_MASK 0x0F
 
-typedef enum {INTERRUPT_ENABLE=0x10, INTERRUPT_DISABLE=0} ic_t; 
+
+#define DAYTIME_LUMINOSITY    8.0
+
+typedef enum {INTERRUPT_DISABLE=0, INTERRUPT_ENABLE=1} ic_t; 
 
 /* struct to store the attrs associated with the interrupt control register */
 typedef struct
@@ -86,10 +89,14 @@ typedef struct
     /* integration time for the sensor */
     integ_time_t integ_time;
 
-    /* whether manual cycling is required */
+    /* whether manual timing is required */
     uint8_t if_manual;
 
 }timing_reg_val;
+
+/* struct that contains enum to represent night or day time */
+typedef enum { DAY_TIME, NIGHT_TIME }time_of_day_t;
+
 
 /* all the function prototypes */
 i2c_rc read_id_reg(int light_sensor_fd, uint8_t* part_no, uint8_t* rev_no);
