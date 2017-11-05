@@ -14,7 +14,8 @@
 #include "../includes/light_sensor.h"
 #include "../includes/i2c.h"
 #include "../includes/log.h"
-
+#include "../includes/temp.h"
+#include "../includes/USRled.h"
 
 /* Global pthread variable */
 pthread_t temperature_sensor_td;
@@ -109,7 +110,7 @@ void log_ts_id(uint8_t data,message_t* log_id){
 
 void *temperature(void *threadp){
 	printf("got in temp thread\n");
-	uint8_t temp_value = 25;
+	uint8_t temp_value = 35;
 	message_t temp_message;
 
 	log_ts_id(temp_value, &temp_message); 
@@ -246,6 +247,8 @@ void *light_sensor(void *light_sensor_param)
 void *decision(void *threadp){
 	//pthread_mutex_t htimelock;
 	mqd_t decision_queue;
+	char *parsing_buffer;
+	char *decision_value;
 	message_t received_decision;
     struct mq_attr decision_queue_attr;
     decision_queue_attr.mq_flags=0;
@@ -260,12 +263,8 @@ void *decision(void *threadp){
     }
 	while(1){
 		
-		if(mq_receive(decision_queue, (char*)&received_decision, MAX_MSG_SIZE_LOG_QUEUE, NULL)==-1)
-        {
-            perror("mq_receive failed");
-            exit(0);
-        }
-        printf("the message received:%s\n", received_decision.message);
+		
+        //printf("the message received:%s\n", received_decision.message);
 		pthread_mutex_lock(&decision_mutex);		
 		if(count_decision != 1){
 			
@@ -276,6 +275,28 @@ void *decision(void *threadp){
 
 		}
 		pthread_mutex_unlock(&decision_mutex);
+		if(mq_receive(decision_queue, (char*)&received_decision, MAX_MSG_SIZE_LOG_QUEUE, NULL)==-1)
+        {
+            perror("mq_receive failed");
+            exit(0);
+        }
+		parsing_buffer= received_decision.message;
+		parsing_buffer=strtok(parsing_buffer," ");
+		while(parsing_buffer!=NULL){
+			printf("%s\n",parsing_buffer);
+			decision_value=parsing_buffer;
+			parsing_buffer=strtok(NULL," ");	
+		}
+		int val =atoi(decision_value);
+		if(val<30){
+			printf("normal temperature\n");
+		}
+		else{
+			printf("alert: LED will glow\n");
+			detection_led();
+		}
+		
+
 	}
 }
 
