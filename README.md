@@ -12,25 +12,23 @@ is within bounds. And lights an LED on the device when it exceeds bounds.
 All the threads communication is continually logged to a file.
 ### File wise detail:
 #### Source files:
-src/i2c.c: a generic i2c driver that communicates that is used by both the sensors. It contains basic routines like 
-i2c (read/write) (byte/word), and i2c init.
-src/light_sensor: high-level driver for the light sensor. Calls routines in i2c.c to read/write to all the registers on the
-sensor.
-src/temp.c:high-level driver for the temperature sensor. Calls routines in i2c.c to read/write to all the registers on the
-sensor.
-src/log.c: Contains routines that enable inter thread communication among the threads.
-src/main.c: Contains all the thread functions and the message queue creation that is used by log.c to facilitate communication.
+1. src/i2c.c: a generic i2c driver that communicates that is used by both the sensors. It contains basic routines like 
+i2c (read/write) (byte/word), and i2c init.</br></br>
+2. src/light_sensor: high-level driver for the light sensor. Calls routines in i2c.c to read/write to all the registers on the sensor.</br></br>
+3. src/temp.c:high-level driver for the temperature sensor. Calls routines in i2c.c to read/write to all the registers on the
+sensor.</br></br>
+4. src/log.c: Contains routines that enable inter thread communication among the threads.</br></br>
+5. src/main.c: Contains all the thread functions and the message queue creation that is used by log.c to facilitate communication.</br></br>
 #### Header files:
 The includes folder contains all the corresponding header files that are referenced by the above files, example, log.h
 contains the message packet struct that is sent to the logger thread which is then logged, it also contains the message
 packet structure that is passed among threads.
 
 #### Unit Tests:
-This folder contains all the src files mentioned above and in addition, it also contains the following test runner:
-light_sensor_ut.c: test runner for the light sensor driver.
-unit_tests/ut_i2c.c: test runner for the low-level i2c driver.
-unit_tests/makefile: makefile for the unit tests. Do make to generate the executable for the light sensor driver test runner.
-Do a 'make ut_i2c' to generate the executable i2c_ut for the test runner low level i2c.c file.
+This folder contains all the src files mentioned above and in addition, it also contains the following test runners:
+1. unit_tests/light_sensor_ut.c: test runner for the light sensor driver.</br></br>
+2. unit_tests/ut_i2c.c: test runner for the low-level i2c driver.</br></br>
+3. unit_tests/makefile: makefile for the unit tests. Do make to generate the executable for the light sensor driver test runner. Do a 'make ut_i2c' to generate the executable i2c_ut for the test runner low level i2c.c file.</br></br>
 
 ## Prerequisites:
 1. The Beagle Bone Green
