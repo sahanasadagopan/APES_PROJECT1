@@ -1,0 +1,6 @@
+Name: cmocka
+Description: The cmocka unit testing library
+Version: 1.1.0
+Libs: -L/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/lib -lcmocka
+Cflags: -I/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/include
+

@@ -1,0 +1,999 @@
+[1509886887.658384],log level:0,thread name:Decision Task initialised ,Decision Task initialised: is Initialised
+[1509886887.689268],log level:0,thread name:Temperature Sensor ,Temperature Sensor: is Initialised
+[1509886887.700999],log level:0,thread name:Light Sensor ,Light Sensor: is Initialised
+[1509886887.716288],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.721181],log level:0,thread name:temp ,temp:is alive
+[1509886887.726703],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.847960
+[1509886887.734162],log level:0,thread name:decision ,decision:is alive
+[1509886887.734669],log level:0,thread name:log ,log:is alive
+[1509886887.737566],log level:0,thread name:light ,light:is alive
+[1509886887.749746],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.752693],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.757945],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.760586],log level:0,thread name:temp ,temp:is alive
+[1509886887.769135],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.847960
+[1509886887.772853],log level:0,thread name:decision ,decision:is alive
+[1509886887.773341],log level:0,thread name:log ,log:is alive
+[1509886887.776315],log level:0,thread name:light ,light:is alive
+[1509886887.789996],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.795178],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.800094],log level:0,thread name:temp ,temp:is alive
+[1509886887.800574],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.812184],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.847960
+[1509886887.815132],log level:0,thread name:decision ,decision:is alive
+[1509886887.816732],log level:0,thread name:log ,log:is alive
+[1509886887.817444],log level:0,thread name:light ,light:is alive
+[1509886887.828657],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.830740],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.833052],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.839404],log level:0,thread name:temp ,temp:is alive
+[1509886887.844079],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886887.845058],log level:0,thread name:decision ,decision:is alive
+[1509886887.845235],log level:0,thread name:log ,log:is alive
+[1509886887.848644],log level:0,thread name:light ,light:is alive
+[1509886887.851906],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.853178],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.854868],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.855116],log level:0,thread name:temp ,temp:is alive
+[1509886887.860315],log level:0,thread name:decision ,decision:is alive
+[1509886887.860899],log level:0,thread name:log ,log:is alive
+[1509886887.864104],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886887.865678],log level:0,thread name:light ,light:is alive
+[1509886887.870552],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.870907],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.872633],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.873277],log level:0,thread name:temp ,temp:is alive
+[1509886887.876502],log level:0,thread name:decision ,decision:is alive
+[1509886887.876700],log level:0,thread name:log ,log:is alive
+[1509886887.881428],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886887.885816],log level:0,thread name:light ,light:is alive
+[1509886887.890666],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.891020],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.892575],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.895860],log level:0,thread name:temp ,temp:is alive
+[1509886887.896909],log level:0,thread name:decision ,decision:is alive
+[1509886887.897083],log level:0,thread name:log ,log:is alive
+[1509886887.901011],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886887.902292],log level:0,thread name:light ,light:is alive
+[1509886887.906884],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.907260],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.908423],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.909489],log level:0,thread name:temp ,temp:is alive
+[1509886887.912622],log level:0,thread name:decision ,decision:is alive
+[1509886887.912882],log level:0,thread name:log ,log:is alive
+[1509886887.916325],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886887.917870],log level:0,thread name:light ,light:is alive
+[1509886887.922211],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.923111],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.926419],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.927406],log level:0,thread name:temp ,temp:is alive
+[1509886887.928445],log level:0,thread name:decision ,decision:is alive
+[1509886887.929088],log level:0,thread name:log ,log:is alive
+[1509886887.934413],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886887.935695],log level:0,thread name:light ,light:is alive
+[1509886887.940306],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.940679],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.942300],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.943922],log level:0,thread name:temp ,temp:is alive
+[1509886887.945422],log level:0,thread name:decision ,decision:is alive
+[1509886887.946025],log level:0,thread name:log ,log:is alive
+[1509886887.951067],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886887.952293],log level:0,thread name:light ,light:is alive
+[1509886887.957049],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.957432],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.960642],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.960901],log level:0,thread name:temp ,temp:is alive
+[1509886887.962254],log level:0,thread name:decision ,decision:is alive
+[1509886887.962853],log level:0,thread name:log ,log:is alive
+[1509886887.968096],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886887.969155],log level:0,thread name:light ,light:is alive
+[1509886887.972850],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.974306],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.976876],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.977124],log level:0,thread name:temp ,temp:is alive
+[1509886887.977929],log level:0,thread name:decision ,decision:is alive
+[1509886887.978094],log level:0,thread name:log ,log:is alive
+[1509886887.983695],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886887.988498],log level:0,thread name:light ,light:is alive
+[1509886887.993216],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886887.994313],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886887.995259],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886887.995841],log level:0,thread name:temp ,temp:is alive
+[1509886887.996935],log level:0,thread name:decision ,decision:is alive
+[1509886887.998117],log level:0,thread name:log ,log:is alive
+[1509886888.2635],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.3219],log level:0,thread name:light ,light:is alive
+[1509886888.8069],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.8618],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.10055],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.10319],log level:0,thread name:temp ,temp:is alive
+[1509886888.11081],log level:0,thread name:decision ,decision:is alive
+[1509886888.12170],log level:0,thread name:log ,log:is alive
+[1509886888.15998],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.17650],log level:0,thread name:light ,light:is alive
+[1509886888.22492],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.23022],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.23908],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.24101],log level:0,thread name:temp ,temp:is alive
+[1509886888.25170],log level:0,thread name:decision ,decision:is alive
+[1509886888.25323],log level:0,thread name:log ,log:is alive
+[1509886888.30833],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.32054],log level:0,thread name:light ,light:is alive
+[1509886888.38452],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.39466],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.40699],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.40954],log level:0,thread name:temp ,temp:is alive
+[1509886888.42076],log level:0,thread name:decision ,decision:is alive
+[1509886888.42613],log level:0,thread name:log ,log:is alive
+[1509886888.47778],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.49341],log level:0,thread name:light ,light:is alive
+[1509886888.52908],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.53594],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.54994],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.55368],log level:0,thread name:temp ,temp:is alive
+[1509886888.56204],log level:0,thread name:decision ,decision:is alive
+[1509886888.57015],log level:0,thread name:log ,log:is alive
+[1509886888.63299],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.64776],log level:0,thread name:light ,light:is alive
+[1509886888.68713],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.69380],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.70438],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.70656],log level:0,thread name:temp ,temp:is alive
+[1509886888.72086],log level:0,thread name:decision ,decision:is alive
+[1509886888.72288],log level:0,thread name:log ,log:is alive
+[1509886888.78852],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.80953],log level:0,thread name:light ,light:is alive
+[1509886888.84859],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.85193],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.86343],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.86998],log level:0,thread name:temp ,temp:is alive
+[1509886888.88988],log level:0,thread name:decision ,decision:is alive
+[1509886888.89375],log level:0,thread name:log ,log:is alive
+[1509886888.94691],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.95293],log level:0,thread name:light ,light:is alive
+[1509886888.99392],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.100283],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.101776],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.102464],log level:0,thread name:temp ,temp:is alive
+[1509886888.103100],log level:0,thread name:decision ,decision:is alive
+[1509886888.104003],log level:0,thread name:log ,log:is alive
+[1509886888.108364],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.108959],log level:0,thread name:light ,light:is alive
+[1509886888.114454],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.115407],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.116416],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.116995],log level:0,thread name:temp ,temp:is alive
+[1509886888.117653],log level:0,thread name:decision ,decision:is alive
+[1509886888.118207],log level:0,thread name:log ,log:is alive
+[1509886888.123321],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.124377],log level:0,thread name:light ,light:is alive
+[1509886888.128738],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.129812],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.130832],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.131772],log level:0,thread name:temp ,temp:is alive
+[1509886888.132601],log level:0,thread name:decision ,decision:is alive
+[1509886888.133036],log level:0,thread name:log ,log:is alive
+[1509886888.136672],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.137999],log level:0,thread name:light ,light:is alive
+[1509886888.141922],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.142961],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.144125],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.144374],log level:0,thread name:temp ,temp:is alive
+[1509886888.145000],log level:0,thread name:decision ,decision:is alive
+[1509886888.145575],log level:0,thread name:log ,log:is alive
+[1509886888.148663],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.149727],log level:0,thread name:light ,light:is alive
+[1509886888.153735],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.154407],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.156027],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.156266],log level:0,thread name:temp ,temp:is alive
+[1509886888.157392],log level:0,thread name:decision ,decision:is alive
+[1509886888.157583],log level:0,thread name:log ,log:is alive
+[1509886888.163996],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.165051],log level:0,thread name:light ,light:is alive
+[1509886888.171595],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.171982],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.173275],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.174438],log level:0,thread name:temp ,temp:is alive
+[1509886888.175908],log level:0,thread name:decision ,decision:is alive
+[1509886888.176068],log level:0,thread name:log ,log:is alive
+[1509886888.179912],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.180513],log level:0,thread name:light ,light:is alive
+[1509886888.194770],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.195348],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.196767],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.197001],log level:0,thread name:temp ,temp:is alive
+[1509886888.198604],log level:0,thread name:decision ,decision:is alive
+[1509886888.200013],log level:0,thread name:log ,log:is alive
+[1509886888.207263],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886888.207697],log level:0,thread name:light ,light:is alive
+[1509886888.210961],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.211879],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.212697],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.212937],log level:0,thread name:temp ,temp:is alive
+[1509886888.217725],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.219415],log level:0,thread name:decision ,decision:is alive
+[1509886888.220063],log level:0,thread name:log ,log:is alive
+[1509886888.220590],log level:0,thread name:light ,light:is alive
+[1509886888.224369],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.225158],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.229455],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.229713],log level:0,thread name:temp ,temp:is alive
+[1509886888.230094],log level:0,thread name:decision ,decision:is alive
+[1509886888.230817],log level:0,thread name:log ,log:is alive
+[1509886888.234338],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.235866],log level:0,thread name:light ,light:is alive
+[1509886888.243691],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.244857],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.246131],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.246700],log level:0,thread name:temp ,temp:is alive
+[1509886888.247978],log level:0,thread name:decision ,decision:is alive
+[1509886888.248173],log level:0,thread name:log ,log:is alive
+[1509886888.252559],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.253646],log level:0,thread name:light ,light:is alive
+[1509886888.258053],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.264224],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.265340],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.265932],log level:0,thread name:temp ,temp:is alive
+[1509886888.266625],log level:0,thread name:decision ,decision:is alive
+[1509886888.266812],log level:0,thread name:log ,log:is alive
+[1509886888.270844],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.271159],log level:0,thread name:light ,light:is alive
+[1509886888.274877],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.275907],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.276658],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.277142],log level:0,thread name:temp ,temp:is alive
+[1509886888.278836],log level:0,thread name:decision ,decision:is alive
+[1509886888.279291],log level:0,thread name:log ,log:is alive
+[1509886888.283109],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.284500],log level:0,thread name:light ,light:is alive
+[1509886888.288168],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.288956],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.292383],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.292957],log level:0,thread name:temp ,temp:is alive
+[1509886888.296681],log level:0,thread name:decision ,decision:is alive
+[1509886888.297234],log level:0,thread name:log ,log:is alive
+[1509886888.301799],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.303226],log level:0,thread name:light ,light:is alive
+[1509886888.308520],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.310571],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.312529],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.313107],log level:0,thread name:temp ,temp:is alive
+[1509886888.315822],log level:0,thread name:decision ,decision:is alive
+[1509886888.316369],log level:0,thread name:log ,log:is alive
+[1509886888.323077],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.323393],log level:0,thread name:light ,light:is alive
+[1509886888.326255],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.326755],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.328484],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.329028],log level:0,thread name:temp ,temp:is alive
+[1509886888.329862],log level:0,thread name:decision ,decision:is alive
+[1509886888.330327],log level:0,thread name:log ,log:is alive
+[1509886888.335142],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.337478],log level:0,thread name:light ,light:is alive
+[1509886888.341647],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.342453],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.343388],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.347046],log level:0,thread name:temp ,temp:is alive
+[1509886888.348800],log level:0,thread name:decision ,decision:is alive
+[1509886888.349414],log level:0,thread name:log ,log:is alive
+[1509886888.353167],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.354405],log level:0,thread name:light ,light:is alive
+[1509886888.358338],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.359074],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.362236],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.362500],log level:0,thread name:temp ,temp:is alive
+[1509886888.363932],log level:0,thread name:decision ,decision:is alive
+[1509886888.364589],log level:0,thread name:log ,log:is alive
+[1509886888.371367],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.372653],log level:0,thread name:light ,light:is alive
+[1509886888.377032],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.377819],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.380732],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.380992],log level:0,thread name:temp ,temp:is alive
+[1509886888.382283],log level:0,thread name:decision ,decision:is alive
+[1509886888.383711],log level:0,thread name:log ,log:is alive
+[1509886888.388852],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.389838],log level:0,thread name:light ,light:is alive
+[1509886888.395992],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.396352],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.397710],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.398228],log level:0,thread name:temp ,temp:is alive
+[1509886888.399179],log level:0,thread name:decision ,decision:is alive
+[1509886888.399333],log level:0,thread name:log ,log:is alive
+[1509886888.402560],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.404208],log level:0,thread name:light ,light:is alive
+[1509886888.408803],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.409852],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.411063],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.412727],log level:0,thread name:temp ,temp:is alive
+[1509886888.413130],log level:0,thread name:decision ,decision:is alive
+[1509886888.413327],log level:0,thread name:log ,log:is alive
+[1509886888.417613],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.418573],log level:0,thread name:light ,light:is alive
+[1509886888.421589],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.422339],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.423601],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.424156],log level:0,thread name:temp ,temp:is alive
+[1509886888.425287],log level:0,thread name:decision ,decision:is alive
+[1509886888.425474],log level:0,thread name:log ,log:is alive
+[1509886888.429109],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.430747],log level:0,thread name:light ,light:is alive
+[1509886888.434617],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.435226],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.436600],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.437500],log level:0,thread name:temp ,temp:is alive
+[1509886888.438358],log level:0,thread name:decision ,decision:is alive
+[1509886888.438812],log level:0,thread name:log ,log:is alive
+[1509886888.443799],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.444755],log level:0,thread name:light ,light:is alive
+[1509886888.448932],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.449926],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.451020],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.451744],log level:0,thread name:temp ,temp:is alive
+[1509886888.452125],log level:0,thread name:decision ,decision:is alive
+[1509886888.452570],log level:0,thread name:log ,log:is alive
+[1509886888.458123],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.459046],log level:0,thread name:light ,light:is alive
+[1509886888.462948],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.464206],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.465289],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.465498],log level:0,thread name:temp ,temp:is alive
+[1509886888.466569],log level:0,thread name:decision ,decision:is alive
+[1509886888.466749],log level:0,thread name:log ,log:is alive
+[1509886888.471033],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.472277],log level:0,thread name:light ,light:is alive
+[1509886888.476056],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.476348],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.477985],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.478632],log level:0,thread name:temp ,temp:is alive
+[1509886888.479852],log level:0,thread name:decision ,decision:is alive
+[1509886888.480057],log level:0,thread name:log ,log:is alive
+[1509886888.483343],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.484713],log level:0,thread name:light ,light:is alive
+[1509886888.488938],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.489574],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.491037],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.491251],log level:0,thread name:temp ,temp:is alive
+[1509886888.492225],log level:0,thread name:decision ,decision:is alive
+[1509886888.492706],log level:0,thread name:log ,log:is alive
+[1509886888.495982],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.497312],log level:0,thread name:light ,light:is alive
+[1509886888.500874],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.501571],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.502610],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.502815],log level:0,thread name:temp ,temp:is alive
+[1509886888.504087],log level:0,thread name:decision ,decision:is alive
+[1509886888.504648],log level:0,thread name:log ,log:is alive
+[1509886888.508533],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.509791],log level:0,thread name:light ,light:is alive
+[1509886888.513732],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.514062],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.515700],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.516441],log level:0,thread name:temp ,temp:is alive
+[1509886888.517270],log level:0,thread name:decision ,decision:is alive
+[1509886888.517621],log level:0,thread name:log ,log:is alive
+[1509886888.520980],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.522278],log level:0,thread name:light ,light:is alive
+[1509886888.526027],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.526779],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.528049],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.528559],log level:0,thread name:temp ,temp:is alive
+[1509886888.529386],log level:0,thread name:decision ,decision:is alive
+[1509886888.529830],log level:0,thread name:log ,log:is alive
+[1509886888.533837],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.534920],log level:0,thread name:light ,light:is alive
+[1509886888.538145],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.538898],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.539997],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.540767],log level:0,thread name:temp ,temp:is alive
+[1509886888.541194],log level:0,thread name:decision ,decision:is alive
+[1509886888.541338],log level:0,thread name:log ,log:is alive
+[1509886888.544695],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.545759],log level:0,thread name:light ,light:is alive
+[1509886888.549831],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.550827],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.551848],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.552048],log level:0,thread name:temp ,temp:is alive
+[1509886888.552883],log level:0,thread name:decision ,decision:is alive
+[1509886888.553031],log level:0,thread name:log ,log:is alive
+[1509886888.557660],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.558644],log level:0,thread name:light ,light:is alive
+[1509886888.562752],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.563294],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.564479],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.564724],log level:0,thread name:temp ,temp:is alive
+[1509886888.565563],log level:0,thread name:decision ,decision:is alive
+[1509886888.566053],log level:0,thread name:log ,log:is alive
+[1509886888.570485],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.571940],log level:0,thread name:light ,light:is alive
+[1509886888.576682],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.577198],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.578695],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.579204],log level:0,thread name:temp ,temp:is alive
+[1509886888.580507],log level:0,thread name:decision ,decision:is alive
+[1509886888.581018],log level:0,thread name:log ,log:is alive
+[1509886888.583856],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.585173],log level:0,thread name:light ,light:is alive
+[1509886888.589299],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.589913],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.591356],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.592460],log level:0,thread name:temp ,temp:is alive
+[1509886888.593130],log level:0,thread name:decision ,decision:is alive
+[1509886888.593897],log level:0,thread name:log ,log:is alive
+[1509886888.597716],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.598697],log level:0,thread name:light ,light:is alive
+[1509886888.602423],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.603066],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.604108],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.604666],log level:0,thread name:temp ,temp:is alive
+[1509886888.605529],log level:0,thread name:decision ,decision:is alive
+[1509886888.606501],log level:0,thread name:log ,log:is alive
+[1509886888.610067],log level:0,thread name:light sensor ,light sensor: Luminosity is 3.032591
+[1509886888.611371],log level:0,thread name:light ,light:is alive
+[1509886888.615468],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.616575],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.617627],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.617840],log level:0,thread name:temp ,temp:is alive
+[1509886888.618677],log level:0,thread name:decision ,decision:is alive
+[1509886888.619136],log level:0,thread name:log ,log:is alive
+[1509886888.622123],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.623431],log level:0,thread name:light ,light:is alive
+[1509886888.627299],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.627882],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.628918],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.629434],log level:0,thread name:temp ,temp:is alive
+[1509886888.630567],log level:0,thread name:decision ,decision:is alive
+[1509886888.630992],log level:0,thread name:log ,log:is alive
+[1509886888.634959],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.636356],log level:0,thread name:light ,light:is alive
+[1509886888.639949],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.640219],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.641580],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.642082],log level:0,thread name:temp ,temp:is alive
+[1509886888.642910],log level:0,thread name:decision ,decision:is alive
+[1509886888.643357],log level:0,thread name:log ,log:is alive
+[1509886888.646766],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.647914],log level:0,thread name:light ,light:is alive
+[1509886888.651224],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.651921],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.653038],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.653640],log level:0,thread name:temp ,temp:is alive
+[1509886888.654739],log level:0,thread name:decision ,decision:is alive
+[1509886888.655454],log level:0,thread name:log ,log:is alive
+[1509886888.659749],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.660780],log level:0,thread name:light ,light:is alive
+[1509886888.664404],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.664715],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.665966],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.666843],log level:0,thread name:temp ,temp:is alive
+[1509886888.668033],log level:0,thread name:decision ,decision:is alive
+[1509886888.668625],log level:0,thread name:log ,log:is alive
+[1509886888.672325],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.673174],log level:0,thread name:light ,light:is alive
+[1509886888.676924],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.677583],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.678660],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.678871],log level:0,thread name:temp ,temp:is alive
+[1509886888.680173],log level:0,thread name:decision ,decision:is alive
+[1509886888.680890],log level:0,thread name:log ,log:is alive
+[1509886888.694333],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.695347],log level:0,thread name:light ,light:is alive
+[1509886888.702179],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.703282],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.704584],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.705184],log level:0,thread name:temp ,temp:is alive
+[1509886888.706033],log level:0,thread name:decision ,decision:is alive
+[1509886888.706545],log level:0,thread name:log ,log:is alive
+[1509886888.715353],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.715770],log level:0,thread name:light ,light:is alive
+[1509886888.719185],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.720251],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.720930],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.721553],log level:0,thread name:temp ,temp:is alive
+[1509886888.722826],log level:0,thread name:decision ,decision:is alive
+[1509886888.723238],log level:0,thread name:log ,log:is alive
+[1509886888.727561],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.729099],log level:0,thread name:light ,light:is alive
+[1509886888.738270],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.739059],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.740033],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.740222],log level:0,thread name:temp ,temp:is alive
+[1509886888.743316],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.743702],log level:0,thread name:decision ,decision:is alive
+[1509886888.743897],log level:0,thread name:log ,log:is alive
+[1509886888.745612],log level:0,thread name:light ,light:is alive
+[1509886888.749272],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.750439],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.751878],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.752514],log level:0,thread name:temp ,temp:is alive
+[1509886888.756845],log level:0,thread name:decision ,decision:is alive
+[1509886888.757351],log level:0,thread name:log ,log:is alive
+[1509886888.760568],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.761877],log level:0,thread name:light ,light:is alive
+[1509886888.766156],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.766493],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.769568],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.770583],log level:0,thread name:temp ,temp:is alive
+[1509886888.771033],log level:0,thread name:decision ,decision:is alive
+[1509886888.771177],log level:0,thread name:log ,log:is alive
+[1509886888.774847],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.779734],log level:0,thread name:light ,light:is alive
+[1509886888.783588],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.784995],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.785953],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.786887],log level:0,thread name:temp ,temp:is alive
+[1509886888.791650],log level:0,thread name:decision ,decision:is alive
+[1509886888.792685],log level:0,thread name:log ,log:is alive
+[1509886888.796984],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.798081],log level:0,thread name:light ,light:is alive
+[1509886888.801933],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.805356],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.806228],log level:0,thread name:temp ,temp:is alive
+[1509886888.807033],log level:0,thread name:decision ,decision:is alive
+[1509886888.807859],log level:0,thread name:log ,log:is alive
+[1509886888.802297],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.813940],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.815169],log level:0,thread name:light ,light:is alive
+[1509886888.820151],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.820987],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.824992],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.825240],log level:0,thread name:temp ,temp:is alive
+[1509886888.826100],log level:0,thread name:decision ,decision:is alive
+[1509886888.826597],log level:0,thread name:log ,log:is alive
+[1509886888.832094],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.835431],log level:0,thread name:light ,light:is alive
+[1509886888.840173],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.840756],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.841923],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.843791],log level:0,thread name:temp ,temp:is alive
+[1509886888.845397],log level:0,thread name:decision ,decision:is alive
+[1509886888.845604],log level:0,thread name:log ,log:is alive
+[1509886888.849947],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.854076],log level:0,thread name:light ,light:is alive
+[1509886888.858525],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.859776],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.861165],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.861733],log level:0,thread name:temp ,temp:is alive
+[1509886888.862121],log level:0,thread name:decision ,decision:is alive
+[1509886888.862926],log level:0,thread name:log ,log:is alive
+[1509886888.868053],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.869134],log level:0,thread name:light ,light:is alive
+[1509886888.874732],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.875713],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.877100],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.880206],log level:0,thread name:temp ,temp:is alive
+[1509886888.880510],log level:0,thread name:decision ,decision:is alive
+[1509886888.880664],log level:0,thread name:log ,log:is alive
+[1509886888.885075],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.886530],log level:0,thread name:light ,light:is alive
+[1509886888.890125],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.891248],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.893267],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.894306],log level:0,thread name:temp ,temp:is alive
+[1509886888.895178],log level:0,thread name:decision ,decision:is alive
+[1509886888.895852],log level:0,thread name:log ,log:is alive
+[1509886888.899195],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.900625],log level:0,thread name:light ,light:is alive
+[1509886888.904946],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.905242],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.906787],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.907298],log level:0,thread name:temp ,temp:is alive
+[1509886888.908534],log level:0,thread name:decision ,decision:is alive
+[1509886888.908946],log level:0,thread name:log ,log:is alive
+[1509886888.913131],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.914549],log level:0,thread name:light ,light:is alive
+[1509886888.918508],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.919281],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.920617],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.921136],log level:0,thread name:temp ,temp:is alive
+[1509886888.922233],log level:0,thread name:decision ,decision:is alive
+[1509886888.922423],log level:0,thread name:log ,log:is alive
+[1509886888.925697],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.926615],log level:0,thread name:light ,light:is alive
+[1509886888.930149],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.930797],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.932100],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.932713],log level:0,thread name:temp ,temp:is alive
+[1509886888.933818],log level:0,thread name:decision ,decision:is alive
+[1509886888.934258],log level:0,thread name:log ,log:is alive
+[1509886888.938252],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.939641],log level:0,thread name:light ,light:is alive
+[1509886888.943305],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.944136],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.945791],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.946263],log level:0,thread name:temp ,temp:is alive
+[1509886888.947273],log level:0,thread name:decision ,decision:is alive
+[1509886888.947905],log level:0,thread name:log ,log:is alive
+[1509886888.951840],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.953210],log level:0,thread name:light ,light:is alive
+[1509886888.957279],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.958127],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.958938],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.959804],log level:0,thread name:temp ,temp:is alive
+[1509886888.960525],log level:0,thread name:decision ,decision:is alive
+[1509886888.961307],log level:0,thread name:log ,log:is alive
+[1509886888.967295],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.968463],log level:0,thread name:light ,light:is alive
+[1509886888.972176],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.972836],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.974226],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.974861],log level:0,thread name:temp ,temp:is alive
+[1509886888.976104],log level:0,thread name:decision ,decision:is alive
+[1509886888.976550],log level:0,thread name:log ,log:is alive
+[1509886888.981656],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.982850],log level:0,thread name:light ,light:is alive
+[1509886888.987928],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886888.988305],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886888.988904],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886888.989912],log level:0,thread name:temp ,temp:is alive
+[1509886888.990345],log level:0,thread name:decision ,decision:is alive
+[1509886888.990483],log level:0,thread name:log ,log:is alive
+[1509886888.993978],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886888.995045],log level:0,thread name:light ,light:is alive
+[1509886888.999945],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.284],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.1229],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.1755],log level:0,thread name:temp ,temp:is alive
+[1509886889.3233],log level:0,thread name:decision ,decision:is alive
+[1509886889.3420],log level:0,thread name:log ,log:is alive
+[1509886889.6897],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886889.8151],log level:0,thread name:light ,light:is alive
+[1509886889.11596],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.12237],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.13721],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.13932],log level:0,thread name:temp ,temp:is alive
+[1509886889.15178],log level:0,thread name:decision ,decision:is alive
+[1509886889.15709],log level:0,thread name:log ,log:is alive
+[1509886889.19453],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.974259
+[1509886889.20842],log level:0,thread name:light ,light:is alive
+[1509886889.23922],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.24557],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.25991],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.26204],log level:0,thread name:temp ,temp:is alive
+[1509886889.27308],log level:0,thread name:decision ,decision:is alive
+[1509886889.27859],log level:0,thread name:log ,log:is alive
+[1509886889.30787],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.32249],log level:0,thread name:light ,light:is alive
+[1509886889.36173],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.38167],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.38796],log level:0,thread name:temp ,temp:is alive
+[1509886889.39961],log level:0,thread name:decision ,decision:is alive
+[1509886889.40138],log level:0,thread name:log ,log:is alive
+[1509886889.40685],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.43856],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.44914],log level:0,thread name:light ,light:is alive
+[1509886889.48805],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.49426],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.51697],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.51936],log level:0,thread name:temp ,temp:is alive
+[1509886889.53068],log level:0,thread name:decision ,decision:is alive
+[1509886889.53615],log level:0,thread name:log ,log:is alive
+[1509886889.56942],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.58383],log level:0,thread name:light ,light:is alive
+[1509886889.61827],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.62469],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.63766],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.64875],log level:0,thread name:temp ,temp:is alive
+[1509886889.65889],log level:0,thread name:decision ,decision:is alive
+[1509886889.66249],log level:0,thread name:log ,log:is alive
+[1509886889.70008],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.71033],log level:0,thread name:light ,light:is alive
+[1509886889.77803],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.78708],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.80063],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.80580],log level:0,thread name:temp ,temp:is alive
+[1509886889.81748],log level:0,thread name:decision ,decision:is alive
+[1509886889.82147],log level:0,thread name:log ,log:is alive
+[1509886889.86546],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.87576],log level:0,thread name:light ,light:is alive
+[1509886889.91321],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.91905],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.93208],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.93457],log level:0,thread name:temp ,temp:is alive
+[1509886889.94173],log level:0,thread name:decision ,decision:is alive
+[1509886889.94581],log level:0,thread name:log ,log:is alive
+[1509886889.98081],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.99113],log level:0,thread name:light ,light:is alive
+[1509886889.102856],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.103764],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.105078],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.105587],log level:0,thread name:temp ,temp:is alive
+[1509886889.106370],log level:0,thread name:decision ,decision:is alive
+[1509886889.106554],log level:0,thread name:log ,log:is alive
+[1509886889.109754],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.111044],log level:0,thread name:light ,light:is alive
+[1509886889.114514],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.116653],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.117471],log level:0,thread name:temp ,temp:is alive
+[1509886889.118231],log level:0,thread name:decision ,decision:is alive
+[1509886889.118669],log level:0,thread name:log ,log:is alive
+[1509886889.119170],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.122638],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.123932],log level:0,thread name:light ,light:is alive
+[1509886889.127353],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.127742],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.130075],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.130322],log level:0,thread name:temp ,temp:is alive
+[1509886889.131387],log level:0,thread name:decision ,decision:is alive
+[1509886889.132050],log level:0,thread name:log ,log:is alive
+[1509886889.135332],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.136731],log level:0,thread name:light ,light:is alive
+[1509886889.139997],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.140277],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.141457],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.141968],log level:0,thread name:temp ,temp:is alive
+[1509886889.143115],log level:0,thread name:decision ,decision:is alive
+[1509886889.143995],log level:0,thread name:log ,log:is alive
+[1509886889.147431],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.148834],log level:0,thread name:light ,light:is alive
+[1509886889.151930],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.152579],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.154067],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.154675],log level:0,thread name:temp ,temp:is alive
+[1509886889.155453],log level:0,thread name:decision ,decision:is alive
+[1509886889.156018],log level:0,thread name:log ,log:is alive
+[1509886889.159792],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.160709],log level:0,thread name:light ,light:is alive
+[1509886889.165122],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.165885],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.167366],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.167933],log level:0,thread name:temp ,temp:is alive
+[1509886889.169099],log level:0,thread name:decision ,decision:is alive
+[1509886889.169554],log level:0,thread name:log ,log:is alive
+[1509886889.173111],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.174443],log level:0,thread name:light ,light:is alive
+[1509886889.177345],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.177991],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.179193],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.179852],log level:0,thread name:temp ,temp:is alive
+[1509886889.180583],log level:0,thread name:decision ,decision:is alive
+[1509886889.180748],log level:0,thread name:log ,log:is alive
+[1509886889.184457],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.185361],log level:0,thread name:light ,light:is alive
+[1509886889.199459],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.200454],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.202120],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.203074],log level:0,thread name:temp ,temp:is alive
+[1509886889.208845],log level:0,thread name:decision ,decision:is alive
+[1509886889.209317],log level:0,thread name:log ,log:is alive
+[1509886889.212672],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.212964],log level:0,thread name:light ,light:is alive
+[1509886889.215935],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.216381],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.217438],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.217634],log level:0,thread name:temp ,temp:is alive
+[1509886889.222032],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.224033],log level:0,thread name:decision ,decision:is alive
+[1509886889.224239],log level:0,thread name:log ,log:is alive
+[1509886889.224923],log level:0,thread name:light ,light:is alive
+[1509886889.228761],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.229505],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.230905],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.231255],log level:0,thread name:temp ,temp:is alive
+[1509886889.236965],log level:0,thread name:decision ,decision:is alive
+[1509886889.237780],log level:0,thread name:log ,log:is alive
+[1509886889.240827],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.241138],log level:0,thread name:light ,light:is alive
+[1509886889.244679],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.245640],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.246316],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.246530],log level:0,thread name:temp ,temp:is alive
+[1509886889.250897],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.252073],log level:0,thread name:decision ,decision:is alive
+[1509886889.252264],log level:0,thread name:log ,log:is alive
+[1509886889.252482],log level:0,thread name:light ,light:is alive
+[1509886889.257718],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.258104],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.259276],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.264011],log level:0,thread name:temp ,temp:is alive
+[1509886889.264922],log level:0,thread name:decision ,decision:is alive
+[1509886889.265113],log level:0,thread name:log ,log:is alive
+[1509886889.268806],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.269115],log level:0,thread name:light ,light:is alive
+[1509886889.273414],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.274459],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.275752],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.275976],log level:0,thread name:temp ,temp:is alive
+[1509886889.277171],log level:0,thread name:decision ,decision:is alive
+[1509886889.277677],log level:0,thread name:log ,log:is alive
+[1509886889.283221],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.285182],log level:0,thread name:light ,light:is alive
+[1509886889.289143],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.289507],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.291866],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.292539],log level:0,thread name:temp ,temp:is alive
+[1509886889.296545],log level:0,thread name:decision ,decision:is alive
+[1509886889.296740],log level:0,thread name:log ,log:is alive
+[1509886889.300537],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.301656],log level:0,thread name:light ,light:is alive
+[1509886889.305953],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.307734],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.309209],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.309848],log level:0,thread name:temp ,temp:is alive
+[1509886889.312576],log level:0,thread name:decision ,decision:is alive
+[1509886889.313308],log level:0,thread name:log ,log:is alive
+[1509886889.317333],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.318720],log level:0,thread name:light ,light:is alive
+[1509886889.325517],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.325965],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.326894],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.327124],log level:0,thread name:temp ,temp:is alive
+[1509886889.330745],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.332160],log level:0,thread name:decision ,decision:is alive
+[1509886889.332824],log level:0,thread name:log ,log:is alive
+[1509886889.333354],log level:0,thread name:light ,light:is alive
+[1509886889.337041],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.337779],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.341722],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.342449],log level:0,thread name:temp ,temp:is alive
+[1509886889.342880],log level:0,thread name:decision ,decision:is alive
+[1509886889.343370],log level:0,thread name:log ,log:is alive
+[1509886889.348378],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.351743],log level:0,thread name:light ,light:is alive
+[1509886889.356467],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.357387],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.359746],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.360454],log level:0,thread name:temp ,temp:is alive
+[1509886889.363869],log level:0,thread name:decision ,decision:is alive
+[1509886889.364134],log level:0,thread name:log ,log:is alive
+[1509886889.367400],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.369211],log level:0,thread name:light ,light:is alive
+[1509886889.374427],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.376582],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.377176],log level:0,thread name:temp ,temp:is alive
+[1509886889.378162],log level:0,thread name:decision ,decision:is alive
+[1509886889.378694],log level:0,thread name:log ,log:is alive
+[1509886889.375008],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.384342],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.387434],log level:0,thread name:light ,light:is alive
+[1509886889.391442],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.392376],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.393483],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.395958],log level:0,thread name:temp ,temp:is alive
+[1509886889.397470],log level:0,thread name:decision ,decision:is alive
+[1509886889.397649],log level:0,thread name:log ,log:is alive
+[1509886889.402720],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.404376],log level:0,thread name:light ,light:is alive
+[1509886889.408399],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.409433],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.411825],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.412368],log level:0,thread name:temp ,temp:is alive
+[1509886889.413195],log level:0,thread name:decision ,decision:is alive
+[1509886889.413656],log level:0,thread name:log ,log:is alive
+[1509886889.417579],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.418904],log level:0,thread name:light ,light:is alive
+[1509886889.424179],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.424846],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.425895],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.426147],log level:0,thread name:temp ,temp:is alive
+[1509886889.426980],log level:0,thread name:decision ,decision:is alive
+[1509886889.427447],log level:0,thread name:log ,log:is alive
+[1509886889.430752],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.432133],log level:0,thread name:light ,light:is alive
+[1509886889.435998],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.436621],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.438076],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.438729],log level:0,thread name:temp ,temp:is alive
+[1509886889.440218],log level:0,thread name:decision ,decision:is alive
+[1509886889.440666],log level:0,thread name:log ,log:is alive
+[1509886889.445027],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.446152],log level:0,thread name:light ,light:is alive
+[1509886889.450441],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.451080],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.452873],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.453802],log level:0,thread name:temp ,temp:is alive
+[1509886889.454436],log level:0,thread name:decision ,decision:is alive
+[1509886889.454595],log level:0,thread name:log ,log:is alive
+[1509886889.458929],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.460339],log level:0,thread name:light ,light:is alive
+[1509886889.465107],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.465917],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.466992],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.468048],log level:0,thread name:temp ,temp:is alive
+[1509886889.469166],log level:0,thread name:decision ,decision:is alive
+[1509886889.469689],log level:0,thread name:log ,log:is alive
+[1509886889.473932],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.475078],log level:0,thread name:light ,light:is alive
+[1509886889.482095],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.482734],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.483864],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.484119],log level:0,thread name:temp ,temp:is alive
+[1509886889.484979],log level:0,thread name:decision ,decision:is alive
+[1509886889.485460],log level:0,thread name:log ,log:is alive
+[1509886889.489194],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.490218],log level:0,thread name:light ,light:is alive
+[1509886889.493788],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.494832],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.496268],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.496789],log level:0,thread name:temp ,temp:is alive
+[1509886889.497588],log level:0,thread name:decision ,decision:is alive
+[1509886889.498049],log level:0,thread name:log ,log:is alive
+[1509886889.501773],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.503049],log level:0,thread name:light ,light:is alive
+[1509886889.506116],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.507072],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.508212],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.508867],log level:0,thread name:temp ,temp:is alive
+[1509886889.509657],log level:0,thread name:decision ,decision:is alive
+[1509886889.510059],log level:0,thread name:log ,log:is alive
+[1509886889.513790],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.518758],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.519098],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.520935],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.524921],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.529383],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.530097],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.532022],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.535544],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.540687],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.541037],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.542682],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.546257],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.549844],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.550498],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.551645],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.554779],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.560714],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.561640],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.562889],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.568559],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.572535],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.573006],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.574276],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.577610],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.581243],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.581850],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.582908],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.587729],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.591708],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.592351],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.593826],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.597637],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.602454],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.603190],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.604406],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.608771],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.612542],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.613181],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.614243],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.617434],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.620991],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.621627],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.622830],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.626928],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.630603],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.630876],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.632963],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.637038],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.640938],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.641555],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.643008],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.647696],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.652259],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.652569],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.653750],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.657861],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.661996],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.662998],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.663884],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.668044],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.672053],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.672369],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.673675],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.677493],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.682712],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.685138],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.685977],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.697535],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.702737],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.704550],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.705609],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.711978],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.717040],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.717736],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.720888],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000
+[1509886889.725560],log level:0,thread name:light sensor ,light sensor: Luminosity is 2.879558
+[1509886889.730391],log level:3,thread name:temperature thread ,temperature thread: is requesting light task to the query
+[1509886889.730757],log level:3,thread name:light thread ,light thread: is responding to the query
+[1509886889.736669],log level:0,thread name:temperature sensor ,temperature sensor: Temperature is 22.000000

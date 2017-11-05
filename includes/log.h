@@ -17,17 +17,14 @@
 
 #include "light_sensor.h"
 
-#define MAX_MSGS_IN_LOG_QUEUE   50
+#define MAX_MSGS_IN_LOG_QUEUE   1000
 #define MAX_MSG_SIZE_LOG_QUEUE  300
-#define MAX_MSGS_IN_TEMP_QUEUE 50
-#define MAX_MSG_SIZE_TEMP_QUEUE 300
+
 /* queue names */
 #define LOG_QUEUE_NAME          "/logger_task"
 #define LIGHT_TASK_QUEUE        "/light_task"
 #define TEMPERATURE_TASK_QUEUE  "/temperature_task"
-#define MAIN_TASK_QUEUE         "/main_task"
 #define DECISION_QUEUE_NAME "/decision"
-#define NEW_QUEUE_NAME "/newqueue"
 
 typedef enum {LOG_INFO, LOG_DRIVER, LOG_ALERT, LOG_CRITICAL} log_level_t;
 
@@ -72,13 +69,21 @@ typedef struct
     void* data;
 }thread_message_t;
 
+/* CHANGE LOG STUFF */
+#define MAX_CHANGE_PERMISSIBLE_POS  50.0
+#define MAX_CHANGE_PERMISSIBLE_NEG -50.0
 
+typedef enum {CHANGE_LOG_REQUIRED, NO_CHANGE_LOG_REQUIRED} if_log_reqd_t;
 
+if_log_reqd_t if_lux_change_log(float luminosity_old, float luminosity,float* change_lux);
+
+typedef enum {DAY, NIGHT} night_day_t;
+#define DAYTIME_THRESHOLD	8.0
 message_rc request_ls_id(thread_message_t* ls_id_message, ls_id_val* ls_id);
 
 message_rc light_sensor_create_response(thread_message_t* received_message, thread_message_t* response_message, int light_sensor_fd);
 
-message_rc light_sensor_send_response(thread_message_t* response_message, thread_id tid);
+//message_rc light_sensor_send_response(thread_message_t* response_message, thread_id tid);
 
 message_rc temperature_sensor_create_response(thread_message_t* received_message, thread_message_t* response_message, int temp_sensor_fd);
 
@@ -94,11 +99,14 @@ message_rc open_queue(mqd_t* queue_descriptor, const char* queue_name);
 
 message_rc send_response(thread_message_t* response_message, thread_id tid_requester);
 
-message_rc request_data_temp(thread_message_t* request_message);
-
 void heartbeat_api(char* task,log_message_t* hb_message);
 
-void log_ls_id(uint8_t part_no, uint8_t rev, log_message_t* log_id);
+void log_ls_id(float luminosity, log_message_t* log_id);
 
 void log_ts_id(float celsius,log_message_t* log_id);
+
+void task_initialise_msgpkt(log_message_t *log_id,const char* thread_name);
+
+void log_ls_change(float change, log_message_t* log_id);
+
 #endif

@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/cmocka/example/database.h
+
+/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/cmocka/example/product_database.c
+database.h
+-
+
+/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/cmocka/example/product_database_test.c
+stdarg.h
+-
+stddef.h
+-
+setjmp.h
+-
+cmocka.h
+-
+database.h
+-
+
+/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/cmocka/include/cmocka.h
+

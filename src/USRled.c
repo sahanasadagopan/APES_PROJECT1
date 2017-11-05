@@ -9,7 +9,7 @@ for(i=0;i<2;i++){
 		fwrite("1",sizeof(char),1,LEDHandle);
 		fclose(LEDHandle);
 	}
-	usleep(100);
+	usleep(10);
 	if((LEDHandle = fopen(LEDBrightness,"r+")) != NULL){
 		fwrite("0",sizeof(char),1,LEDHandle);
 		fclose(LEDHandle);

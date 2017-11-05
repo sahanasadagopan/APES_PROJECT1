@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/cmocka/example/allocate_module.c
+config.h
+/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/cmocka/example/config.h
+malloc.h
+-
+sys/types.h
+-
+stdlib.h
+-
+
+/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/cmocka/example/allocate_module_test.c
+stdarg.h
+-
+stddef.h
+-
+setjmp.h
+-
+cmocka.h
+-
+
+/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/cmocka/include/cmocka.h
+
+config.h
+

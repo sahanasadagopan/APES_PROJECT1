@@ -1,0 +1,325 @@
+Performing C SOURCE FILE Test WITH_STACK_PROTECTOR failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a6792/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_a6792.dir/build.make CMakeFiles/cmTC_a6792.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a6792.dir/src.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -DWITH_STACK_PROTECTOR   -fstack-protector -o CMakeFiles/cmTC_a6792.dir/src.c.o   -c /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/src.c
+/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/src.c: In function ‘main’:
+/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/src.c:1:27: error: unused parameter ‘argv’ [-Werror=unused-parameter]
+ int main(int argc, char **argv) { char buffer[256]; return buffer[argc]=0;}
+                           ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_a6792.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_a6792.dir/src.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_a6792.dir/src.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_a6792/fast' failed
+make[2]: *** [cmTC_a6792/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(int argc, char **argv) { char buffer[256]; return buffer[argc]=0;}
+Determining if the include file io.h exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b0244/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_b0244.dir/build.make CMakeFiles/cmTC_b0244.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b0244.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_b0244.dir/CheckIncludeFile.c.o   -c /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:16: fatal error: io.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_b0244.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_b0244.dir/CheckIncludeFile.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_b0244.dir/CheckIncludeFile.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_b0244/fast' failed
+make[2]: *** [cmTC_b0244/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function calloc exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8eff2/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_8eff2.dir/build.make CMakeFiles/cmTC_8eff2.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8eff2.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=calloc   -o CMakeFiles/cmTC_8eff2.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+<command-line>:0:23: error: conflicting types for built-in function ‘calloc’ [-Werror]
+/usr/share/cmake-3.5/Modules/CheckFunctionExists.c:6:6: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+ char CHECK_FUNCTION_EXISTS();
+      ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_8eff2.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_8eff2.dir/CheckFunctionExists.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_8eff2.dir/CheckFunctionExists.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_8eff2/fast' failed
+make[2]: *** [cmTC_8eff2/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function exit exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_48898/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_48898.dir/build.make CMakeFiles/cmTC_48898.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_48898.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=exit   -o CMakeFiles/cmTC_48898.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+<command-line>:0:23: error: conflicting types for built-in function ‘exit’ [-Werror]
+/usr/share/cmake-3.5/Modules/CheckFunctionExists.c:6:6: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+ char CHECK_FUNCTION_EXISTS();
+      ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_48898.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_48898.dir/CheckFunctionExists.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_48898.dir/CheckFunctionExists.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_48898/fast' failed
+make[2]: *** [cmTC_48898/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function fprintf exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6fa66/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_6fa66.dir/build.make CMakeFiles/cmTC_6fa66.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6fa66.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=fprintf   -o CMakeFiles/cmTC_6fa66.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+<command-line>:0:23: error: conflicting types for built-in function ‘fprintf’ [-Werror]
+/usr/share/cmake-3.5/Modules/CheckFunctionExists.c:6:6: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+ char CHECK_FUNCTION_EXISTS();
+      ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_6fa66.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_6fa66.dir/CheckFunctionExists.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_6fa66.dir/CheckFunctionExists.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_6fa66/fast' failed
+make[2]: *** [cmTC_6fa66/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function free exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_32ca1/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_32ca1.dir/build.make CMakeFiles/cmTC_32ca1.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_32ca1.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=free   -o CMakeFiles/cmTC_32ca1.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+<command-line>:0:23: error: conflicting types for built-in function ‘free’ [-Werror]
+/usr/share/cmake-3.5/Modules/CheckFunctionExists.c:6:6: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+ char CHECK_FUNCTION_EXISTS();
+      ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_32ca1.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_32ca1.dir/CheckFunctionExists.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_32ca1.dir/CheckFunctionExists.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_32ca1/fast' failed
+make[2]: *** [cmTC_32ca1/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function malloc exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b8f81/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_b8f81.dir/build.make CMakeFiles/cmTC_b8f81.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b8f81.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=malloc   -o CMakeFiles/cmTC_b8f81.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+<command-line>:0:23: error: conflicting types for built-in function ‘malloc’ [-Werror]
+/usr/share/cmake-3.5/Modules/CheckFunctionExists.c:6:6: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+ char CHECK_FUNCTION_EXISTS();
+      ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_b8f81.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_b8f81.dir/CheckFunctionExists.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_b8f81.dir/CheckFunctionExists.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_b8f81/fast' failed
+make[2]: *** [cmTC_b8f81/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function memcpy exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9589a/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_9589a.dir/build.make CMakeFiles/cmTC_9589a.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9589a.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=memcpy   -o CMakeFiles/cmTC_9589a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+<command-line>:0:23: error: conflicting types for built-in function ‘memcpy’ [-Werror]
+/usr/share/cmake-3.5/Modules/CheckFunctionExists.c:6:6: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+ char CHECK_FUNCTION_EXISTS();
+      ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_9589a.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_9589a.dir/CheckFunctionExists.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_9589a.dir/CheckFunctionExists.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_9589a/fast' failed
+make[2]: *** [cmTC_9589a/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function memset exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4b7cd/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_4b7cd.dir/build.make CMakeFiles/cmTC_4b7cd.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4b7cd.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=memset   -o CMakeFiles/cmTC_4b7cd.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+<command-line>:0:23: error: conflicting types for built-in function ‘memset’ [-Werror]
+/usr/share/cmake-3.5/Modules/CheckFunctionExists.c:6:6: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+ char CHECK_FUNCTION_EXISTS();
+      ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_4b7cd.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_4b7cd.dir/CheckFunctionExists.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_4b7cd.dir/CheckFunctionExists.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_4b7cd/fast' failed
+make[2]: *** [cmTC_4b7cd/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function printf exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f8b18/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_f8b18.dir/build.make CMakeFiles/cmTC_f8b18.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f8b18.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=printf   -o CMakeFiles/cmTC_f8b18.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+<command-line>:0:23: error: conflicting types for built-in function ‘printf’ [-Werror]
+/usr/share/cmake-3.5/Modules/CheckFunctionExists.c:6:6: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+ char CHECK_FUNCTION_EXISTS();
+      ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_f8b18.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_f8b18.dir/CheckFunctionExists.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_f8b18.dir/CheckFunctionExists.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_f8b18/fast' failed
+make[2]: *** [cmTC_f8b18/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strcmp exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_cd58d/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_cd58d.dir/build.make CMakeFiles/cmTC_cd58d.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cd58d.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=strcmp   -o CMakeFiles/cmTC_cd58d.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+<command-line>:0:23: error: conflicting types for built-in function ‘strcmp’ [-Werror]
+/usr/share/cmake-3.5/Modules/CheckFunctionExists.c:6:6: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+ char CHECK_FUNCTION_EXISTS();
+      ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_cd58d.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_cd58d.dir/CheckFunctionExists.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_cd58d.dir/CheckFunctionExists.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_cd58d/fast' failed
+make[2]: *** [cmTC_cd58d/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function sprintf exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b0f0d/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_b0f0d.dir/build.make CMakeFiles/cmTC_b0f0d.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b0f0d.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=sprintf   -o CMakeFiles/cmTC_b0f0d.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+<command-line>:0:23: error: conflicting types for built-in function ‘sprintf’ [-Werror]
+/usr/share/cmake-3.5/Modules/CheckFunctionExists.c:6:6: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+ char CHECK_FUNCTION_EXISTS();
+      ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_b0f0d.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_b0f0d.dir/CheckFunctionExists.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_b0f0d.dir/CheckFunctionExists.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_b0f0d/fast' failed
+make[2]: *** [cmTC_b0f0d/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function vsnprintf exists failed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d45e8/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_d45e8.dir/build.make CMakeFiles/cmTC_d45e8.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d45e8.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=vsnprintf   -o CMakeFiles/cmTC_d45e8.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+<command-line>:0:23: error: conflicting types for built-in function ‘vsnprintf’ [-Werror]
+/usr/share/cmake-3.5/Modules/CheckFunctionExists.c:6:6: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+ char CHECK_FUNCTION_EXISTS();
+      ^
+cc1: all warnings being treated as errors
+CMakeFiles/cmTC_d45e8.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_d45e8.dir/CheckFunctionExists.c.o' failed
+make[3]: *** [CMakeFiles/cmTC_d45e8.dir/CheckFunctionExists.c.o] Error 1
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_d45e8/fast' failed
+make[2]: *** [cmTC_d45e8/fast] Error 2
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the system is big endian passed with the following output:
+Change Dir: /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_026c4/fast"
+make[2]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_026c4.dir/build.make CMakeFiles/cmTC_026c4.dir/build
+make[3]: Entering directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_026c4.dir/TestEndianess.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_026c4.dir/TestEndianess.c.o   -c /home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/TestEndianess.c
+Linking C executable cmTC_026c4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_026c4.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_026c4.dir/TestEndianess.c.o  -o cmTC_026c4 -rdynamic 
+make[3]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/sahana/Kernal-Development/HW2/unit_tests-circbuff/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+TestEndianess.c:
+/* A 16 bit integer is required. */
+typedef unsigned short cmakeint16;
+
+/* On a little endian machine, these 16bit ints will give "THIS IS LITTLE ENDIAN."
+   On a big endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_little[] =  {0x4854, 0x5349, 0x4920, 0x2053, 0x494c, 0x5454, 0x454c, 0x4520, 0x444e, 0x4149, 0x2e4e, 0x0000};
+
+/* on a big endian machine, these 16bit ints will give "THIS IS BIG ENDIAN."
+   On a little endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_big[] =     {0x5448, 0x4953, 0x2049, 0x5320, 0x4249, 0x4720, 0x454e, 0x4449, 0x414e, 0x2e2e, 0x0000};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_little[argc];
+  require += info_big[argc];
+  (void)argv;
+  return require;
+}
+
+

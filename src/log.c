@@ -25,7 +25,6 @@ mqd_t light_sensor_queue;
 message_rc light_sensor_read_queue(thread_message_t* received_message)
 {  
 
-    
     if(mq_receive(light_sensor_queue, (char*)received_message, MAX_MSG_SIZE_LOG_QUEUE, NULL)==-1)
     {   
         perror("mq_receive failed in read ls queue\n");
@@ -36,9 +35,7 @@ message_rc light_sensor_read_queue(thread_message_t* received_message)
 
 
 message_rc temperature_sensor_read_queue(thread_message_t* received_message){
-	mqd_t temperature_sensor_queue;
-	//open_queue(&temperature_sensor_queue, TEMPERATURE_TASK_QUEUE);
-    if(mq_receive(temperature_sensor_queue,(char*)received_message,MAX_MSG_SIZE_LOG_QUEUE,NULL)==-1){
+    if(mq_receive(light_sensor_queue,(char*)received_message,MAX_MSG_SIZE_LOG_QUEUE,NULL)==-1){
         perror("mq_recieve failed in read temperature_sensor_queue\n");
         exit(0);
     }
@@ -82,41 +79,14 @@ message_rc light_sensor_parse_message(thread_message_t* received_message, int li
     else if(received_message->message_type==RESPONSE_MESSAGE)
     {
        /* a function that receives the data and logs to the logger queue */
-    	if(received_message->message_type==TEMPERATURE_DATA_C){
-    		float *temp_data_C=(float *)received_message->data;
-    		printf("temperature data %f\n", *temp_data_C);
-    	}
+    
         return MSGRC_SUCCESS;
     }
     else
         return MSGRC_FAILURE;
 }
 
-message_rc request_data_temp(thread_message_t* request_message){
-	mqd_t temp_sensor_queue;
-	struct mq_attr temp_queue_attr;
-	temp_queue_attr.mq_flags=0;
-	temp_queue_attr.mq_maxmsg=MAX_MSGS_IN_TEMP_QUEUE;
-	temp_queue_attr.mq_msgsize=MAX_MSG_SIZE_TEMP_QUEUE;
 
-	request_message->message_type=REQUEST_MESSAGE;
-	request_message->tid = LIGHT_TASK;
-	request_message->what_data=TEMPERATURE_DATA_C;
-	//open_queue(&temperature_sensor_queue, NEW_QUEUE_NAME);
-	temp_sensor_queue=mq_open(NEW_QUEUE_NAME,O_RDWR,0666,&temp_queue_attr);
-    if(temp_sensor_queue==(mqd_t)-1){
-        perror("mq in temperature queue opening failed");
-        exit(0);
-    }
-	/*if(mq_send(temperature_sensor_queue, (char*)request_message, MAX_MSG_SIZE_TEMP_QUEUE, 0)==-1)
-    {
-                perror("write to the temperature task queue failed\n");
-                exit(0);
-    }*/
-
-
-
-}
 /* create a response packet ready to be  
  * sent to the requester
  * message with the apt data to the
@@ -283,28 +253,24 @@ message_rc temperature_sensor_create_response(thread_message_t* received_message
     response_message->tid=TEMPERATURE_TASK;
     
     /* its data type will be the same as that of the received message */
-    response_message->what_data=received_message->what_data;
+/*    response_message->what_data=received_message->what_data;
 
-   switch(response_message->what_data)
+    switch(response_message->what_data)
     {
       case TEMPERATURE_DATA_C:
       {
         //float *celsius = (float*)malloc(sizeof(float));
-		float celsius=20;
-		float* c = (float *)(&celsius);
-        if(c== NULL){
+	float celsius =20;
+        if(celsius== NULL){
             perror("memory allocation for temp in C failed\n");
         }
-        //temperature_C(temp_sensor_fd,celsius);
-        /*float resolution=0.0625;
-        float fahrenheit,kelvin;
-        temp_register(resolution,temp_sensor_fd,&fahrenheit,celsius,&kelvin);*/
-        response_message->data=(void *)c;
+        temperature_C(temp_sensor_fd,*celsius);
+        response_message->data=(void *)celsius;
 
         return MSGRC_SUCCESS;
       }
 
-    /*  case TEMPERATURE_DATA_F:{
+      case TEMPERATURE_DATA_F:{
       //float *fahreheit = (float*)malloc(sizeof(float));
 	float fahreheit=90;
       if(fahreheit==NULL){
@@ -325,18 +291,18 @@ message_rc temperature_sensor_create_response(thread_message_t* received_message
         temperature_K(temp_sensor_fd,*kelvin);
         response_message->data=(void *)kelvin;
 
-      }*/
+      }
       
-    }
+    }*/
 
 }
 
 
 /* open queue to write to it */
-/*message_rc open_queue(mqd_t* queue_descriptor, const char* queue_name)
+message_rc open_queue(mqd_t* queue_descriptor, const char* queue_name)
 {
     /* assign queue attributes */
- /*   struct mq_attr queue_descriptor_attr;
+    struct mq_attr queue_descriptor_attr;
     
     queue_descriptor_attr.mq_flags=0;
         
@@ -344,18 +310,18 @@ message_rc temperature_sensor_create_response(thread_message_t* received_message
     queue_descriptor_attr.mq_msgsize=MAX_MSG_SIZE_LOG_QUEUE;
     
     /* create queue and make the ptr argument pt to its descriptor */    
-/*    *queue_descriptor=mq_open(queue_name, O_WRONLY, 666, &queue_descriptor_attr);
+    *queue_descriptor=mq_open(queue_name, O_WRONLY, 666, &queue_descriptor_attr);
     
     /* check if the queue got created properly */
-/*    if(*queue_descriptor==(mqd_t)-1)
+    if(*queue_descriptor==(mqd_t)-1)
     {
         perror("mq in logger failed");
         exit(0);
     }
     
     /* return successfully */
-/*    return MSGRC_SUCCESS;
-}*/
+    return MSGRC_SUCCESS;
+}
 
 /* sends packet to the queue of the thread with
  * the thread id given and then calls routine that logs about it
@@ -377,7 +343,7 @@ message_rc send_response(thread_message_t* response_message, thread_id tid_reque
             mqd_t light_task_qd;
             
             /* open queue belonging to the light task */
-            //open_queue(&light_task_qd, LIGHT_TASK_QUEUE); 
+            open_queue(&light_task_qd, LIGHT_TASK_QUEUE); 
            
             
             /* write to the queue using the queue descriptor */
@@ -393,7 +359,7 @@ message_rc send_response(thread_message_t* response_message, thread_id tid_reque
             mqd_t temperature_task_qd;
             
             /* open queue belonging to the temperature task */
-            //open_queue(&temperature_task_qd, TEMPERATURE_TASK_QUEUE); 
+            open_queue(&temperature_task_qd, TEMPERATURE_TASK_QUEUE); 
             
             /* write to the queue using the queue descriptor */
             if(mq_send(temperature_task_qd, (char*)response_message, MAX_MSG_SIZE_LOG_QUEUE, 0)==-1)
@@ -403,24 +369,7 @@ message_rc send_response(thread_message_t* response_message, thread_id tid_reque
             }
             
             return MSGRC_SUCCESS;
-        }
-        case MAIN_TASK:
-        {
-            mqd_t main_task_qd;
-            
-            /* open queue belonging to the main task */
-           // open_queue(&main_task_qd, MAIN_TASK_QUEUE); 
-            
-            /* write to the queue using the queue descriptor */
-            if(mq_send(main_task_qd, (char*)response_message, MAX_MSG_SIZE_LOG_QUEUE, 0)==-1)
-            {
-                perror("write to the main task queue failed\n");
-                exit(0);
-            }
-            
-            return MSGRC_SUCCESS;
-        }
-        
+        }        
         default:
             return MSGRC_FAILURE;
     }
@@ -459,7 +408,30 @@ void heartbeat_api(char* task,log_message_t* hb_message){
     hb_message->length = strlen(hb_message->message)+sizeof(hb_message->log_level)+ sizeof(hb_message->timestamp) +1; 
 }
 
-void log_ls_id(uint8_t part_no, uint8_t rev, log_message_t* log_id)
+/* compares past present and past lux val 
+ * and returns code which indicates if change is
+ * required */
+if_log_reqd_t if_lux_change_log(float luminosity_old, float luminosity,float* change_lux)
+{
+     *change_lux=luminosity_old-luminosity;
+
+     if(*change_lux>MAX_CHANGE_PERMISSIBLE_POS)
+     {
+	/*return apt code suggesting log requirement*/	
+	return CHANGE_LOG_REQUIRED;
+     }
+
+     if(*change_lux<MAX_CHANGE_PERMISSIBLE_NEG)
+     {
+     	/*return apt code suggesting log requirement*/	
+        return CHANGE_LOG_REQUIRED;
+     }
+
+     /* value is within bounds */	
+     return NO_CHANGE_LOG_REQUIRED;
+}
+
+void log_ls_id(float luminosity, log_message_t* log_id)
 {
    // message_t log_id;
     //struct timeval timestamp;
@@ -469,8 +441,8 @@ void log_ls_id(uint8_t part_no, uint8_t rev, log_message_t* log_id)
     
     log_id->log_level=LOG_INFO;
 
-    sprintf(log_id->message, "%s: The part number is: %d, and the revision is:%d",\
-            log_id->thread_name, part_no, rev);
+    sprintf(log_id->message, "%s: Luminosity is %f",\
+            log_id->thread_name, luminosity);
     
     log_id->length=strlen(log_id->message)+sizeof(log_id->log_level)+sizeof(log_id->timestamp) + 1; 
 }
@@ -483,3 +455,50 @@ void log_ts_id(float celsius,log_message_t* log_id){
     sprintf(log_id->message,"%s: Temperature is %f",log_id->thread_name,celsius);
     log_id->length = strlen(log_id->message)+sizeof(log_id->log_level)+sizeof(log_id->timestamp) +1;
 }
+
+void log_ls_change(float change, log_message_t* log_id)
+{
+   // message_t log_id;
+    //struct timeval timestamp;
+    gettimeofday(&log_id->timestamp, NULL);
+    
+    strcpy(log_id->thread_name, "light sensor");
+    
+    log_id->log_level=LOG_ALERT;
+
+    sprintf(log_id->message, "%s: Sudden Change in luminosity %f",\
+            log_id->thread_name, change);
+    
+    log_id->length=strlen(log_id->message)+sizeof(log_id->log_level)+sizeof(log_id->timestamp) + 1; 
+}
+
+void task_initialise_msgpkt(log_message_t *log_id,const char* thread_name){
+	gettimeofday(&log_id->timestamp, NULL);
+    
+    strcpy(log_id->thread_name, thread_name);
+    
+    log_id->log_level=LOG_INFO;
+
+    sprintf(log_id->message, "%s: is Initialised",log_id->thread_name);
+    
+    log_id->length=strlen(log_id->message)+sizeof(log_id->log_level)+sizeof(log_id->timestamp);
+
+
+
+}
+
+void task_req_res(log_message_t *log_id,const char* thread_name,char* method){
+	gettimeofday(&log_id->timestamp, NULL);
+    
+    strcpy(log_id->thread_name, thread_name);
+    
+    log_id->log_level=LOG_CRITICAL;
+
+    sprintf(log_id->message, "%s: is %s to the query",log_id->thread_name,method);
+    
+    log_id->length=strlen(log_id->message)+sizeof(log_id->log_level)+sizeof(log_id->timestamp);
+
+
+
+}
+
