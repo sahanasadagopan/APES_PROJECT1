@@ -9,7 +9,6 @@
 
 #define FILE_NAME "light_sensor_ut_results.txt"
 
-FILE* fp;
 int light_sensor_fd;
 
 void test_turn_on_light_sensor()
@@ -205,16 +204,9 @@ void test_get_luminosity()
 
 int main()
 {
-    fp=fopen(FILE_NAME, "w");
     
     /* initialize the sensor */
     i2c_init(LIGHT_SENSOR_DEV_ADDR, &light_sensor_fd);
-    
-    if(fp==NULL)
-    {
-        perror("file opening failed\n");
-        exit(0);
-    }
     
     UNITY_BEGIN();
     
@@ -232,7 +224,6 @@ int main()
     
     RUN_TEST(test_get_luminosity);
     
-    fclose(fp);
     
     return UNITY_END();
 }

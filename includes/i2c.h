@@ -30,5 +30,6 @@ i2c_rc i2c_init(uint8_t dev_addr, int* file);
 
 i2c_rc i2c_write_word(uint8_t* write_word, int file);
 
+i2c_rc i2c_read_word(uint8_t* word_read, int file);
 
 #endif

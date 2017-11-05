@@ -57,7 +57,7 @@ typedef enum {MIN_GAIN=0, MAX_GAIN=1} gain_t;
 
 #define DAYTIME_LUMINOSITY    8.0
 
-typedef enum {INTERRUPT_DISABLE=0, INTERRUPT_ENABLE=1} ic_t; 
+typedef enum {INTERRUPT_ENABLE=0x10, INTERRUPT_DISABLE=0} ic_t; 
 
 /* struct to store the attrs associated with the interrupt control register */
 typedef struct
