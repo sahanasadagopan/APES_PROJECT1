@@ -21,10 +21,10 @@
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
 #include <inttypes.h>
-
+#include <pthread.h>
 #include "../includes/i2c.h"
 
-
+pthread_mutext_t i2c_locker=PTHREAD_MUTEX_INITIALIZER;
 
 /* Name         :   static i2c_rc open_i2c_bus();
  * 
@@ -131,17 +131,20 @@ i2c_rc i2c_init(uint8_t dev_addr, int* file)
  * */
 i2c_rc i2c_write(uint8_t* byte_to_write, int file)
 {
+    pthread_mutex_lock(&i2c_locker);
     /* write a byte on the bus using the write system call,
      * this is just like writing to a file, except multibyte
      * writes will probably not work. 
      * the I2C module will take care of following other requirements
      * of the I2C protocol */
+    
     if (write(file, byte_to_write, 1) != 1) 
     {
         /*ERROR HANDLING: i2c transaction failed */
         perror("write failed\n");
         return FAILURE;
     }
+    pthread_mutex_unlock(&i2c_locker);
     /* return  success*/
     return SUCCESS;    
 }
@@ -166,7 +169,7 @@ i2c_rc i2c_write(uint8_t* byte_to_write, int file)
  * */
 i2c_rc i2c_read(uint8_t* byte_read, int file)
 {
-    
+     pthread_mutex_lock(&i2c_locker);
     /* read a byte on the bus using the read system call,
      * this is just like reading from a file, except multibyte
      * reads will probably not work. 
@@ -178,6 +181,8 @@ i2c_rc i2c_read(uint8_t* byte_read, int file)
         perror("read failed\n");
         return FAILURE;
     }
+    pthread_mutex_unlock(&i2c_locker);
+
     /* return  success*/
     return SUCCESS;    
 }
@@ -188,11 +193,13 @@ i2c_rc i2c_read(uint8_t* byte_read, int file)
  * The next two byte should be the words*/
 i2c_rc i2c_write_word(uint8_t* write_word, int file)
 {
+    pthread_mutex_lock(&i2c_locker);
     if(write(file, write_word, 3)!=3)
     {
         perror("write word failed\n");
         return FAILURE;
     }
+    pthread_mutex_unlock(&i2c_locker);
 
     return SUCCESS;
 }
@@ -218,7 +225,7 @@ i2c_rc i2c_write_word(uint8_t* write_word, int file)
 
 i2c_rc i2c_read_word(uint8_t* byte_read, int file)
 {
-    
+     pthread_mutex_lock(&i2c_locker);
     /* read a byte on the bus using the read system call,
      * this is just like reading from a file, except multibyte
      * reads will probably not work. 
@@ -230,7 +237,8 @@ i2c_rc i2c_read_word(uint8_t* byte_read, int file)
         perror("read failed\n");
         return FAILURE;
     }
-    
+    pthread_mutex_unlock(&i2c_locker);
+
     /* return  success*/
     return SUCCESS;    
 }
